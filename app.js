@@ -31,20 +31,24 @@ player.anchor.set(0.5)
 player.position.set(app.screen.width/2, app.screen.height / 2)
 //add player sprite to DOM
 app.stage.addChild(player)
-
-
 //for tracking ship angle and mouse cursor coords, used for vectors
 let angle = 0
 let mousePosition;
-
-
 //keep track of all bullets on screeen
 let bullets = []
 let bulletSpeed = 7
-
 //keeps track of key presses
 let keys = {}
 
+//player y 
+let opponent = PIXI.Sprite.from('ship.png')
+opponent.x = 100
+opponent.y = 100
+opponent.width = 50
+opponent.height = 50
+opponent.anchor.set(0.5)
+opponent.rotation = 0
+app.stage.addChild(opponent)
 
 //allows mousechange to trigger changes from anywhere on page
 app.stage.hitArea = app.screen;
