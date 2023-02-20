@@ -6,17 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="startPage.css">
     <title>Document</title>
+    
 </head>
 <body>
+    <script src = "startscreen.js"></script>
     <main id="grid-container">
         <header id="header">
             <img src="title.png" alt="Space Wars">
         </header>
-        <form id="playername-form">
+        <form id="playername-form" onsubmit = "return onStart()">
             <label for="playername-input">Enter your name</label>
             <input id="playername-input" type="text">
             <button>Start Game</button>
-            <p></p>
+            <p id="connection-feedback"></p>
         </form>
         <aside id="instructions">
             <p>use WASD to move</p>
