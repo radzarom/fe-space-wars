@@ -42,8 +42,16 @@ body {
     height: 100%;
     background-image: url('background.jpg');
     background-size:cover;
-}
+    overflow: hidden;
 
+}
+canvas{
+ 
+  width: 100%;
+  height: 100%;
+  max-width: 100vw;
+  max-height: 100vh;
+}
 
 #grid-container {
     display: grid;

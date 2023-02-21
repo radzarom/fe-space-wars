@@ -15,9 +15,7 @@ player.dx = 0
 player.dy = 0
 //makes the position of sprite the center instead of upper left
 player.anchor.set(0.5)
-//sets player sprite to the center of screen
 
-//add player sprite to DOM
 
 //for tracking ship angle and mouse cursor coords, used for vectors
 let angle = 0
@@ -172,6 +170,16 @@ function movePlayer(e) {
 //     //adds gameLoop function to the ticker so it is updated with each frame
 //     app.ticker.add(gameLoop);
 
+
+function collisionDetection(player, bullet){
+   let remove= 15; 
+   let playerBox=player.getBounds() 
+   let bulletBox=bullet.getBounds()
+return playerBox.x+(playerBox.width-remove)>bulletBox.x && 
+playerBox.x<bulletBox.x+(bulletBox.width-remove) && 
+playerBox.y+(playerBox.height-remove)>bulletBox.y && 
+playerBox.y<bulletBox.y+(bulletBox.height+remove) 
+}
     //gets vector for bullet using cursor coords and center position
     function fireBullet(e) {
 
@@ -201,7 +209,7 @@ function movePlayer(e) {
         //set direction with vector
         bullet.direction = direction
         //set position of bullet to middle of sprite
-        bullet.anchor.set(0.5);
+        bullet.anchor.set(1,0.5);
         
         //offsets start of bullet path to front of ship rather than center
         bullet.x = x + direction.x*40;
@@ -221,7 +229,9 @@ function movePlayer(e) {
         for(let i = 0; i < bullets.length; i++) {
             bullets[i].position.y += bullets[i].direction.y*bulletSpeed
             bullets[i].position.x += bullets[i].direction.x*bulletSpeed
-
+            if (collisionDetection(opponent, bullets[i])) {
+               bullets[i].dead = true;
+            }
             //conditions for determining if bullet is offscreen go here, set to dead
             if(bullets[i].position.y < 0) {
                 bullets[i].dead = true;
@@ -234,6 +244,9 @@ function movePlayer(e) {
             opponentBullets[i].position.y += opponentBullets[i].direction.y*bulletSpeed
             opponentBullets[i].position.x += opponentBullets[i].direction.x*bulletSpeed
             //conditions for determining if bullet is offscreen go here, set to dead
+           if (collisionDetection(player, opponentBullets[i])) {
+            opponentBullets[i].dead = true;
+           }
             if(opponentBullets[i].y < 0) {
                 opponentBullets[i].dead = true;
             }
