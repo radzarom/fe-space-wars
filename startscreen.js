@@ -117,10 +117,13 @@ async function startGame() {
       //  currentPosX = messageBody.x;
       //  currentPosY = messageBody.y;
      } else {
-       opponent.x = messageBody.x;
-       opponent.y = messageBody.y;
-       opponent.rotation = messageBody.angle + Math.PI/2
-       bulletsReceived = messageBody.bullets
+        opponent.x = messageBody.x;
+        opponent.y = messageBody.y;
+        opponent.rotation = messageBody.angle + Math.PI/2
+        bulletsReceived = messageBody.bullets
+        opponentHealth = messageBody.health
+
+        document.getElementById('currentopponenthealth').style.width = `${opponentHealth}%`
 
        for(let bullet of bulletsReceived) {
         

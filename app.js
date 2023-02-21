@@ -2,6 +2,8 @@ let app = new PIXI.Application({width: 1400, height: 800})
 
 //create player sprite
 let player = PIXI.Sprite.from('ship.png')
+//track health
+let playerHealth = 100;
 //scale dimensions
 player.width = 50
 player.height = 50
@@ -30,6 +32,7 @@ let keys = {}
 
 //player y 
 let opponent = PIXI.Sprite.from('ship.png')
+opponentHealth = 100;
 opponent.x = 100
 opponent.y = 100
 opponent.width = 50
@@ -41,10 +44,33 @@ let bulletsReceived = []
 
 function createGame() {
 
+    const playerHealthBar = document.createElement('div')
+    playerHealthBar.setAttribute('id', 'playerhealthbar')
+    const currentPlayerHealth = document.createElement('div')
+    currentPlayerHealth.setAttribute('id', 'currentplayerhealth')
+    const playerName = document.createElement('p')
+    playerName.setAttribute('id', 'playerName')
+    playerName.innerText = username
+
+    const opponentHealthBar = document.createElement('div')
+    opponentHealthBar.setAttribute('id', 'opponenthealthbar')
+    const currentOpponentHealth = document.createElement('div')
+    currentOpponentHealth.setAttribute('id', 'currentopponenthealth')
+    const opponentName = document.createElement('p')
+    opponentName.setAttribute('id', 'playerName')
+    opponentName.innerText = otherPlayer
+
+    document.getElementById('body').appendChild(playerHealthBar)
+    document.getElementById('body').appendChild(opponentHealthBar)
+    document.getElementById('playerhealthbar').appendChild(currentPlayerHealth)
+    document.getElementById('opponenthealthbar').appendChild(currentOpponentHealth)
+    document.getElementById('playerhealthbar').appendChild(playerName)
+    document.getElementById('opponenthealthbar').appendChild(opponentName)
+
+
     const gameDiv = document.createElement('div')
     gameDiv.setAttribute('id', 'gameDiv')
     document.getElementById('body').appendChild(gameDiv)
-    //Creates Pixi application
     
     //Selects div to append app to in the DOM
     document.querySelector("#gameDiv").appendChild(app.view)
@@ -96,90 +122,7 @@ function movePlayer(e) {
 }
 
 
-// //Selects div to append app to in the DOM
-// document.querySelector("#gameDiv").appendChild(app.view)
 
-
-// //renders 60 star shapes in background
-// for(let i = 0; i < 150; i++) {
-//     const star = new PIXI.Graphics();
-//     //draws a star at random width and height, with random number of points between 4-8, random radius 5-15
-//     star.beginFill(0xADADAD).drawStar(Math.random() * app.screen.width, Math.random() * app.screen.height, Math.random() * 4 + 4, Math.random() * 5 + 1)
-//     .endFill()
-
-//     //add star to DOM
-//     app.stage.addChild(star)
-// }
-
-//create player sprite
-// let player = PIXI.Sprite.from('ship.png')
-// //scale dimensions
-// player.width = 50
-// player.height = 50
-// //x, y velocity
-// player.dx = 0
-// player.dy = 0
-// //makes the position of sprite the center instead of upper left
-// player.anchor.set(0.5)
-// //sets player sprite to the center of screen
-// player.position.set(app.screen.width/2, app.screen.height / 2)
-// //add player sprite to DOM
-// app.stage.addChild(player)
-// //for tracking ship angle and mouse cursor coords, used for vectors
-// let angle = 0
-// let mousePosition;
-// //keep track of all bullets on screeen
-// let bullets = []
-// let bulletSpeed = 7
-// //keeps track of key presses
-// let keys = {}
-
-// //player y 
-// let opponent = PIXI.Sprite.from('ship.png')
-// opponent.x = 100
-// opponent.y = 100
-// opponent.width = 50
-// opponent.height = 50
-// opponent.anchor.set(0.5)
-// opponent.rotation = 0
-// app.stage.addChild(opponent)
-
-// //allows mousechange to trigger changes from anywhere on page
-// app.stage.hitArea = app.screen;
-// app.stage.interactive = true;
-
-// //on mouse move, determine angle needed for ship
-// app.stage.on('mousemove', movePlayer);
-
-//     function movePlayer(e) {
-//         //updates global variable for this
-//         mousePosition = e.data.global;
-
-//         let playerPosition = player.getGlobalPosition();
-
-//         //do math thing
-//         angle = Math.atan2(mousePosition.y - playerPosition.y, mousePosition.x - playerPosition.x)
-
-//         //calculate angle of rotation
-//         player.rotation = angle + Math.PI/2
-//     }
-
-// //on click fire bullet
-// app.stage.on("pointerdown", fireBullet);
-
-//     //adds gameLoop function to the ticker so it is updated with each frame
-//     app.ticker.add(gameLoop);
-
-
-function collisionDetection(player, bullet){
-   let remove= 15; 
-   let playerBox=player.getBounds() 
-   let bulletBox=bullet.getBounds()
-return playerBox.x+(playerBox.width-remove)>bulletBox.x && 
-playerBox.x<bulletBox.x+(bulletBox.width-remove) && 
-playerBox.y+(playerBox.height-remove)>bulletBox.y && 
-playerBox.y<bulletBox.y+(bulletBox.height+remove) 
-}
     //gets vector for bullet using cursor coords and center position
     function fireBullet(e) {
 
@@ -224,13 +167,26 @@ playerBox.y<bulletBox.y+(bulletBox.height+remove)
         return bullet;
     }
 
+    function collisionDetection(player, bullet){
+        let remove= 15; 
+        let playerBox=player.getBounds() 
+        let bulletBox=bullet.getBounds()
+        
+        return playerBox.x+(playerBox.width-remove)>bulletBox.x && 
+        playerBox.x<bulletBox.x+(bulletBox.width-remove) && 
+        playerBox.y+(playerBox.height-remove)>bulletBox.y && 
+        playerBox.y<bulletBox.y+(bulletBox.height+remove) 
+     }
+
     //iterates over bullets array to give new coords
     function updateBullets(delta, direction) {
         for(let i = 0; i < bullets.length; i++) {
             bullets[i].position.y += bullets[i].direction.y*bulletSpeed
             bullets[i].position.x += bullets[i].direction.x*bulletSpeed
             if (collisionDetection(opponent, bullets[i])) {
-               bullets[i].dead = true;
+                
+                
+                bullets[i].dead = true;
             }
             //conditions for determining if bullet is offscreen go here, set to dead
             if(bullets[i].position.y < 0) {
@@ -245,7 +201,9 @@ playerBox.y<bulletBox.y+(bulletBox.height+remove)
             opponentBullets[i].position.x += opponentBullets[i].direction.x*bulletSpeed
             //conditions for determining if bullet is offscreen go here, set to dead
            if (collisionDetection(player, opponentBullets[i])) {
-            opponentBullets[i].dead = true;
+                playerHealth -= 10
+                opponentBullets[i].dead = true;
+                document.getElementById('currentplayerhealth').style.width = `${playerHealth}%`
            }
             if(opponentBullets[i].y < 0) {
                 opponentBullets[i].dead = true;
@@ -374,7 +332,8 @@ function gameLoop(delta, direction) {
             y: player.y,
             username,
             angle,
-            bullets: bulletsToSend
+            bullets: bulletsToSend,
+            playerHealth
         };
 
         bulletsToSend = [];
