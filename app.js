@@ -351,7 +351,7 @@ function endGameOnWin() {
 
     const winnerIs = document.createElement('p')
     winnerIs.setAttribute('id', 'winnerIs')
-    winnerIs.innerText = `Winner is ${userName}`
+    winnerIs.innerText = `Winner is ${username}`
 
     document.getElementById('body').innerHTML = ""
     document.getElementById('body').appendChild(winnerIS)
