@@ -76,15 +76,21 @@ async function startGame() {
    };
  }
 
+ function declareEndGame() {
+    const messageBody = {
+      lost: true,
+      username,
+    };
+    
+    ws.send(JSON.stringify(messageBody));
+ }
+ 
+
  async function playGame() {
     ws = new WebSocket(site + "/matched?team=" + teamName);
  
    window.onbeforeunload = function () {
-     const messageBody = {
-       lost: true,
-       username,
-     };
-     ws.send(JSON.stringify(messageBody));
+     declareEndGame()
    };
  
    ws.onopen = function (e) {
@@ -105,10 +111,10 @@ async function startGame() {
  
      if (messageBody.lost) {
        if (username !== messageBody.username) {
-         alert(username + " won the game!");
+        endGameOnWin()
          return;
        } else {
-         alert(username + " lost the game!");
+        endGameOnLoss()
          return;
        }
      }
@@ -121,8 +127,9 @@ async function startGame() {
         opponent.y = messageBody.y;
         opponent.rotation = messageBody.angle + Math.PI/2
         bulletsReceived = messageBody.bullets
-        opponentHealth = messageBody.health
+        opponentHealth = messageBody.playerHealth
 
+        console.log(opponentHealth);
         document.getElementById('currentopponenthealth').style.width = `${opponentHealth}%`
 
        for(let bullet of bulletsReceived) {
@@ -132,30 +139,4 @@ async function startGame() {
      }
    };
  
-  //  document.body.onkeydown = (evt) => {
-  //    if (evt.key === "ArrowUp") {
-  //      currentPosY -= speed;
-  //    } else if (evt.key === "ArrowDown") {
-  //      currentPosY += speed;
-  //    } else if (evt.key === "ArrowLeft") {
-  //      currentPosX -= speed;
-  //    } else if (evt.key === "ArrowRight") {
-  //      currentPosX += speed;
-  //    }
-  //    const messageBody = {
-  //      x: currentPosX,
-  //      y: currentPosY,
-  //      username,
-  //      currentAngle,
-  //      currentBullets,
-  //    };
-  //    ws.send(JSON.stringify(messageBody));
-  //  };
- 
  }
-//  function onStart (){
-    
-//     document.getElementById("connection-feedback").innerText="waiting for the other player"
-    
-//     return false
-//  }
