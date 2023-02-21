@@ -185,13 +185,14 @@ function movePlayer(e) {
         direction.y /= length;
 
         //create bullet, passing vector
-        let bullet = createBullet(player.x, player.y, direction);
+        let bullet = createBullet(player.x, player.y, direction, angle);
         //add it to the array of existing bullets so it can be updated
         bullets.push(bullet);
+        
         bulletsToSend.push([player.x, player.y, direction])
     }
 
-    function createBullet(x, y, direction) {
+    function createBullet(x, y, direction, angle) {
         //makes new bullet sprite
         let bullet = PIXI.Sprite.from('bullet.png');
 
@@ -201,7 +202,7 @@ function movePlayer(e) {
         bullet.direction = direction
         //set position of bullet to middle of sprite
         bullet.anchor.set(0.5);
-
+        
         //offsets start of bullet path to front of ship rather than center
         bullet.x = x + direction.x*40;
         bullet.y = y + direction.y*40;
@@ -351,7 +352,7 @@ function gameLoop(delta, direction) {
     updatePosition();
     bulletsReceived = [];
 
-    console.log(opponentBullets);
+    //console.log(opponentBullets);
 
     if(ws != 0) {
 

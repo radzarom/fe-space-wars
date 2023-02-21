@@ -120,12 +120,12 @@ async function startGame() {
        opponent.x = messageBody.x;
        opponent.y = messageBody.y;
        opponent.rotation = messageBody.angle + Math.PI/2
-       opponentBullets = messageBody.bullets
+       bulletsReceived = messageBody.bullets
 
-       for(let bullet in bulletsReceived) {
-
-        opponentBullets.push(createBullet(bullet[0], bullet[1], bullet[2]))
-    }
+       for(let bullet of bulletsReceived) {
+        
+        opponentBullets.push(createBullet(bullet[0], bullet[1], bullet[2], opponent.rotation + Math.PI/2))
+      }
      }
    };
  
