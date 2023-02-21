@@ -8,18 +8,21 @@
     <title>Document</title>
     
 </head>
-<body>
+<body id="body">
+    <script src="node_modules/pixi.js/dist/pixi.min.js"></script>
+    <script src="node_modules/@pixi/graphics-extras/dist/graphics-extras.min.js"></script>
+    <script src="app.js"></script>
     <script src = "startscreen.js"></script>
     <main id="grid-container">
         <header id="header">
             <img src="title.png" alt="Space Wars">
         </header>
-        <form id="playername-form" onsubmit = "return onStart()">
-            <label for="playername-input">Enter your name</label>
+        <!-- <form id="playername-form" onsubmit = "return startGame()">
+            <label for="playername-input">Enter your name</label> -->
             <input id="playername-input" type="text">
-            <button>Start Game</button>
+            <button onclick="startGame()">Start Game</button>
             <p id="connection-feedback"></p>
-        </form>
+        <!-- </form> -->
         <aside id="instructions">
             <p>use WASD to move</p>
             <p>turn to shoot with mouse and click</p>
