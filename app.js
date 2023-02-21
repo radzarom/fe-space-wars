@@ -202,6 +202,10 @@ function movePlayer(e) {
             //conditions for determining if bullet is offscreen go here, set to dead
            if (collisionDetection(player, opponentBullets[i])) {
                 playerHealth -= 10
+
+                if(playerHealth <= 0) {
+                    declareEndGame()
+                }
                 opponentBullets[i].dead = true;
                 document.getElementById('currentplayerhealth').style.width = `${playerHealth}%`
            }
@@ -340,6 +344,28 @@ function gameLoop(delta, direction) {
         
         ws.send(JSON.stringify(messageBody))
     }
+}
+
+function endGameOnWin() {
+    app.stop()
+
+    const winnerIs = document.createElement('p')
+    winnerIs.setAttribute('id', 'winnerIs')
+    winnerIs.innerText = `Winner is ${userName}`
+
+    document.getElementById('body').innerHTML = ""
+    document.getElementById('body').appendChild(winnerIS)
+}
+
+function endGameOnLoss() {
+    app.stop()
+
+    const loserIs = document.createElement('p')
+    loserIs.setAttribute('id', 'loserIs')
+    loserIs.innerText = `Loser is ${otherPlayer}`
+
+    document.getElementById('body').innerHTML = ""
+    document.getElementById('body').appendChild(loserIs)
 }
 
 // //Counts seconds elapsed since start
