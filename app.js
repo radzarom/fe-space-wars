@@ -354,7 +354,7 @@ function endGameOnWin() {
     winnerIs.innerText = `Winner is ${username}`
 
     document.getElementById('body').innerHTML = ""
-    document.getElementById('body').appendChild(winnerIS)
+    document.getElementById('body').appendChild(winnerIs)
 }
 
 function endGameOnLoss() {
