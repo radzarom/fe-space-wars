@@ -1,109 +1,115 @@
 
 
-    //gets vector for bullet using cursor coords and center position
-    function fireBullet(e) {
+const laserSound =  new Howl({
+    src:["../sound/laserSound.mp3"],
+    volume: 0.3
+})
 
-        //vector calc
-        let direction = {}
-        direction.x = mousePosition.x - player.x;
-        direction.y = mousePosition.y - player.y;
+//gets vector for bullet using cursor coords and center position
+function fireBullet(e) {
 
-        let length = Math.sqrt(direction.x*direction.x + direction.y*direction.y);
-        direction.x /= length;
-        direction.y /= length;
+    //vector calc
+    let direction = {}
+    direction.x = mousePosition.x - player.x;
+    direction.y = mousePosition.y - player.y;
 
-        //create bullet, passing vector
-        let bullet = createBullet(player.x, player.y, direction, angle);
-        //add it to the array of existing bullets so it can be updated
-        bullets.push(bullet);
-        
-        bulletsToSend.push([player.x, player.y, direction])
+    let length = Math.sqrt(direction.x*direction.x + direction.y*direction.y);
+    direction.x /= length;
+    direction.y /= length;
+
+    //create bullet, passing vector
+    let bullet = createBullet(player.x, player.y, direction, angle);
+    //add it to the array of existing bullets so it can be updated
+    bullets.push(bullet);
+    
+    bulletsToSend.push([player.x, player.y, direction])
+
+    laserSound.play();
+}
+
+function createBullet(x, y, direction, angle) {
+    //makes new bullet sprite
+    let bullet = PIXI.Sprite.from('../graphics/bullet.png');
+
+    bullet.height = 30
+    bullet.width = 5
+    //set direction with vector
+    bullet.direction = direction
+    //set position of bullet to middle of sprite
+    bullet.anchor.set(1,0.5);
+    
+    //offsets start of bullet path to front of ship rather than center
+    bullet.x = x + direction.x*40;
+    bullet.y = y + direction.y*40;
+    bullet.speed = bulletSpeed;
+
+    //determine appropriate rotation for bullet from ship angle
+    bullet.rotation = angle + Math.PI/2;
+    //add to DOM
+    app.stage.addChild(bullet);
+
+    return bullet;
+}
+
+function collisionDetection(player, bullet){
+    let remove = 15; 
+    let playerBox=player.getBounds() 
+    let bulletBox=bullet.getBounds()
+    
+    return playerBox.x+(playerBox.width-remove)>bulletBox.x && 
+    playerBox.x<bulletBox.x+(bulletBox.width-remove) && 
+    playerBox.y+(playerBox.height-remove)>bulletBox.y && 
+    playerBox.y<bulletBox.y+(bulletBox.height+remove) 
     }
 
-    function createBullet(x, y, direction, angle) {
-        //makes new bullet sprite
-        let bullet = PIXI.Sprite.from('../graphics/bullet.png');
-
-        bullet.height = 30
-        bullet.width = 5
-        //set direction with vector
-        bullet.direction = direction
-        //set position of bullet to middle of sprite
-        bullet.anchor.set(1,0.5);
-        
-        //offsets start of bullet path to front of ship rather than center
-        bullet.x = x + direction.x*40;
-        bullet.y = y + direction.y*40;
-        bullet.speed = bulletSpeed;
-
-        //determine appropriate rotation for bullet from ship angle
-        bullet.rotation = angle + Math.PI/2;
-        //add to DOM
-        app.stage.addChild(bullet);
-
-        return bullet;
-    }
-
-    function collisionDetection(player, bullet){
-        let remove= 15; 
-        let playerBox=player.getBounds() 
-        let bulletBox=bullet.getBounds()
-        
-        return playerBox.x+(playerBox.width-remove)>bulletBox.x && 
-        playerBox.x<bulletBox.x+(bulletBox.width-remove) && 
-        playerBox.y+(playerBox.height-remove)>bulletBox.y && 
-        playerBox.y<bulletBox.y+(bulletBox.height+remove) 
-     }
-
-    //iterates over bullets array to give new coords
-    function updateBullets(delta, direction) {
-        for(let i = 0; i < bullets.length; i++) {
-            bullets[i].position.y += bullets[i].direction.y*bulletSpeed
-            bullets[i].position.x += bullets[i].direction.x*bulletSpeed
-            if (collisionDetection(opponent, bullets[i])) {
-                
-                
-                bullets[i].dead = true;
-            }
-            //conditions for determining if bullet is offscreen go here, set to dead
-            if(bullets[i].position.y < 0) {
-                bullets[i].dead = true;
-            }
-        }
-
-
-        for(let i = 0; i < opponentBullets.length; i++) {
+//iterates over bullets array to give new coords
+function updateBullets(delta, direction) {
+    for(let i = 0; i < bullets.length; i++) {
+        bullets[i].position.y += bullets[i].direction.y*bulletSpeed
+        bullets[i].position.x += bullets[i].direction.x*bulletSpeed
+        if (collisionDetection(opponent, bullets[i])) {
             
-            opponentBullets[i].position.y += opponentBullets[i].direction.y*bulletSpeed
-            opponentBullets[i].position.x += opponentBullets[i].direction.x*bulletSpeed
-            //conditions for determining if bullet is offscreen go here, set to dead
-           if (collisionDetection(player, opponentBullets[i])) {
-                playerHealth -= 10
-
-                if(playerHealth <= 0) {
-                    declareEndGame()
-                }
-                opponentBullets[i].dead = true;
-                document.getElementById('currentplayerhealth').style.width = `${playerHealth}%`
-           }
-            if(opponentBullets[i].y < 0) {
-                opponentBullets[i].dead = true;
-            }
+            bullets[i].dead = true;
         }
-
-        //then remove bullets from DOM and bullets array
-        for(let i = 0; i < bullets.length; i++) {
-            if(bullets[i].dead) {
-                app.stage.removeChild(bullets[i])
-                bullets.splice(i, 1);
-            }
-        }
-
-        //then remove bullets from DOM and bullets array
-        for(let i = 0; i < opponentBullets.length; i++) {
-            if(opponentBullets[i].dead) {
-                app.stage.removeChild(opponentBullets[i])
-                opponentBullets.splice(i, 1);
-            }
+        //conditions for determining if bullet is offscreen go here, set to dead
+        if(bullets[i].position.y < 0) {
+            bullets[i].dead = true;
         }
     }
+
+
+    for(let i = 0; i < opponentBullets.length; i++) {
+        
+        opponentBullets[i].position.y += opponentBullets[i].direction.y*bulletSpeed
+        opponentBullets[i].position.x += opponentBullets[i].direction.x*bulletSpeed
+        //conditions for determining if bullet is offscreen go here, set to dead
+        if (collisionDetection(player, opponentBullets[i])) {
+            playerHealth -= 10
+
+            if(playerHealth <= 0) {
+                declareEndGame()
+            }
+            opponentBullets[i].dead = true;
+            document.getElementById('currentplayerhealth').style.width = `${playerHealth}%`
+        }
+        if(opponentBullets[i].y < 0) {
+            opponentBullets[i].dead = true;
+        }
+    }
+
+    //then remove bullets from DOM and bullets array
+    for(let i = 0; i < bullets.length; i++) {
+        if(bullets[i].dead) {
+            app.stage.removeChild(bullets[i])
+            bullets.splice(i, 1);
+        }
+    }
+
+    //then remove bullets from DOM and bullets array
+    for(let i = 0; i < opponentBullets.length; i++) {
+        if(opponentBullets[i].dead) {
+            app.stage.removeChild(opponentBullets[i])
+            opponentBullets.splice(i, 1);
+        }
+    }
+}

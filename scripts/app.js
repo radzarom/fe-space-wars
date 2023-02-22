@@ -1,4 +1,10 @@
+
 let app = new PIXI.Application({width: 1400, height: 800})
+
+let soundtrack = new Howl({
+    src: ["../sound/soundtrack.mp3"],
+    html5: true
+})
 
 //client player
 //create player sprite
@@ -102,6 +108,8 @@ function createGame() {
     //event listeners for key press
     window.addEventListener("keydown", keysDown);
     window.addEventListener("keyup", keysUp);
+
+    soundtrack.play();
 }
 
 
@@ -109,12 +117,9 @@ function createGame() {
 //anything inside of here gets ran on each tick, i think...
 function gameLoop(delta, direction) {
 
-    
     updateBullets(delta, direction);
     updatePosition();
     bulletsReceived = [];
-
-    //console.log(opponentBullets);
 
     if(ws != 0) {
 
