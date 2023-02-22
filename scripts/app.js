@@ -41,8 +41,40 @@ let opponentBullets = []
 let bulletsReceived = []
 
 
+function countdown(){
+    let count = 5;
+    const body = document.querySelector("body");
+    const countDownContainer = document.createElement("div");
+    countDownContainer.setAttribute("id", "countDownContainer");
+    body.appendChild(countDownContainer);
+    const countDownText = document.createElement("p");
+    countDownContainer.appendChild(countDownText);
+    countDownText.setAttribute('id', 'countDownText');
+    countDownText.innerText = count;
+
+    let interval  = setInterval(()=>{
+        count -= 1;
+        countDownText.innerText = count;
+        if(count <= 0){
+            countDownText.remove();
+            countDownContainer.remove();
+            clearInterval(interval);
+            createGame();
+        }
+    }, 1000);
+
+}
+
 //Set up DOM for game, adds background, keyboard mouse interactivity in a gameloop
 function createGame() {
+    //set up game variables
+    gameStarted = true;
+    player.x = startPos[0];
+    player.y = startPos[1];
+    opponent.x = enemyStartPos[0];
+    opponent.y = enemyStartPos[1];
+    player.rotation = startAngle;
+    opponent.rotation = enemyStartAngle;
 
     //create player health bar
     const playerHealthBar = document.createElement('div')

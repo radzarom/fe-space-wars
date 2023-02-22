@@ -19,6 +19,8 @@ let otherHealth = 100;
 let otherBullets = [];
 const speed = 10;
 
+let gameStarted = false;
+
 const site = "ws://spacewarserver.eu-4.evennode.com";
 
 let ws = 0;
@@ -81,17 +83,23 @@ async function playGame() {
 
   ws.onopen = function (e) {
     //Selects div to append app to in the DOM
-    createGame();
+    //createGame();
+    countdown();
 
-    player.x = startPos[0];
-    player.y = startPos[1];
-    opponent.x = enemyStartPos[0];
-    opponent.y = enemyStartPos[1];
-    player.rotation = startAngle;
-    opponent.rotation = enemyStartAngle;
+    // player.x = startPos[0];
+    // player.y = startPos[1];
+    // opponent.x = enemyStartPos[0];
+    // opponent.y = enemyStartPos[1];
+    // player.rotation = startAngle;
+    // opponent.rotation = enemyStartAngle;
   };
 
   ws.onmessage = (webSocketMessage) => {
+
+    if(!gameStarted){
+      return;
+    }
+
     const messageBody = JSON.parse(webSocketMessage.data);
 
     if (messageBody.lost) {
