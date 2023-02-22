@@ -125,6 +125,7 @@ async function playGame() {
             opponent.rotation + Math.PI / 2
           )
         );
+        laserSound.play();
       }
     }
   };

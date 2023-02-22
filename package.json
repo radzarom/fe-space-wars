@@ -19,6 +19,7 @@
   "homepage": "https://github.com/radzarom/fe-space-wars#readme",
   "dependencies": {
     "@pixi/graphics-extras": "^7.2.0-beta",
+    "howler": "^2.2.3",
     "pixi.js": "^7.2.0-beta"
   }
 }
