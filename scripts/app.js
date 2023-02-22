@@ -47,14 +47,15 @@ function countdown(){
     const countDownContainer = document.createElement("div");
     countDownContainer.setAttribute("id", "countDownContainer");
     body.appendChild(countDownContainer);
+
     const countDownText = document.createElement("p");
     countDownContainer.appendChild(countDownText);
     countDownText.setAttribute('id', 'countDownText');
-    countDownText.innerText = count;
+    countDownText.innerText = "Get Ready\n" + count;
 
     let interval  = setInterval(()=>{
         count -= 1;
-        countDownText.innerText = count;
+        countDownText.innerText = "Get Ready\n" + count;
         if(count <= 0){
             countDownText.remove();
             countDownContainer.remove();
@@ -62,7 +63,6 @@ function countdown(){
             createGame();
         }
     }, 1000);
-
 }
 
 //Set up DOM for game, adds background, keyboard mouse interactivity in a gameloop
@@ -170,7 +170,30 @@ function gameLoop(delta, direction) {
     }
 }
 
-function endGameOnWin() {
+const loader = PIXI.Loader.shared;
+function animateExplosion(thisPlayer){  
+  
+    loader.add('tileset', '../graphics/explosionTileSet.png')
+    .load(setup);
+
+    function setup(loader, resources){
+        const textures = [];
+        for(let i = 1; i< 21 ; i++){
+            const texture = PIXI.Texture.from(`explosionTileSet${i}.png`);
+            textures.push(texture);
+        }        
+        const x = thisPlayer.x;
+        const y = thisPlayer.y;
+        thisPlayer = new PIXI.AnimatedSprite(textures);
+        thisPlayer.position.set(x,y);
+        app.stage.addChild(thisPlayer);
+        thisPlayer.play();
+    }
+}
+
+function endGameOnWin() { 
+    animateExplosion(opponent);
+    /*
     app.stop()
 
     const winnerIs = document.createElement('p')
@@ -178,7 +201,7 @@ function endGameOnWin() {
     winnerIs.innerText = `Winner is ${username}`
 
     document.getElementById('body').innerHTML = ""
-    document.getElementById('body').appendChild(winnerIs)
+    document.getElementById('body').appendChild(winnerIs)*/
 }
 
 function endGameOnLoss() {
