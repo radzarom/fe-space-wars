@@ -176,6 +176,7 @@ function gameLoop(delta, direction) {
   }
 }
 
+
 function animateExplosion() {
   const loader = PIXI.Loader.shared;
   loader.add("tileset", "../explosion/explosion.json").load(setup);
@@ -207,7 +208,7 @@ function endGameOnWin() {
     winnerIs.innerText = `Winner is ${username}`
 
     document.getElementById('body').innerHTML = ""
-    document.getElementById('body').appendChild(winnerIs)*/
+    document.getElementById('body').appendChild(winnerIs)
 }
 
 function endGameOnLoss() {
