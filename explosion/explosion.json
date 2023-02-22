@@ -1,0 +1,399 @@
+{"frames": {
+
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-0.png":
+{
+	"frame": {"x":1,"y":1,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-1.png":
+{
+	"frame": {"x":1,"y":118,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-2.png":
+{
+	"frame": {"x":1,"y":235,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-3.png":
+{
+	"frame": {"x":1,"y":352,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-4.png":
+{
+	"frame": {"x":118,"y":1,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-5.png":
+{
+	"frame": {"x":118,"y":118,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-6.png":
+{
+	"frame": {"x":118,"y":235,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-7.png":
+{
+	"frame": {"x":118,"y":352,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-8.png":
+{
+	"frame": {"x":235,"y":1,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-9.png":
+{
+	"frame": {"x":235,"y":118,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-10.png":
+{
+	"frame": {"x":235,"y":235,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-11.png":
+{
+	"frame": {"x":235,"y":352,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-12.png":
+{
+	"frame": {"x":352,"y":1,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-13.png":
+{
+	"frame": {"x":352,"y":118,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-14.png":
+{
+	"frame": {"x":352,"y":235,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-15.png":
+{
+	"frame": {"x":352,"y":352,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-16.png":
+{
+	"frame": {"x":469,"y":1,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-17.png":
+{
+	"frame": {"x":469,"y":118,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-18.png":
+{
+	"frame": {"x":469,"y":235,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-19.png":
+{
+	"frame": {"x":469,"y":352,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-20.png":
+{
+	"frame": {"x":586,"y":1,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-21.png":
+{
+	"frame": {"x":586,"y":118,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-22.png":
+{
+	"frame": {"x":586,"y":235,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-23.png":
+{
+	"frame": {"x":586,"y":352,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-24.png":
+{
+	"frame": {"x":703,"y":1,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-25.png":
+{
+	"frame": {"x":703,"y":118,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-26.png":
+{
+	"frame": {"x":703,"y":235,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-27.png":
+{
+	"frame": {"x":703,"y":352,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-28.png":
+{
+	"frame": {"x":820,"y":1,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-29.png":
+{
+	"frame": {"x":820,"y":118,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-30.png":
+{
+	"frame": {"x":820,"y":235,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-31.png":
+{
+	"frame": {"x":820,"y":352,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-32.png":
+{
+	"frame": {"x":937,"y":1,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-33.png":
+{
+	"frame": {"x":937,"y":118,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-34.png":
+{
+	"frame": {"x":937,"y":235,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-35.png":
+{
+	"frame": {"x":937,"y":352,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-36.png":
+{
+	"frame": {"x":1054,"y":1,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-37.png":
+{
+	"frame": {"x":1054,"y":118,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-38.png":
+{
+	"frame": {"x":1054,"y":235,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-39.png":
+{
+	"frame": {"x":1054,"y":352,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-40.png":
+{
+	"frame": {"x":1171,"y":1,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-41.png":
+{
+	"frame": {"x":1171,"y":118,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-42.png":
+{
+	"frame": {"x":1171,"y":235,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-43.png":
+{
+	"frame": {"x":1171,"y":352,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-44.png":
+{
+	"frame": {"x":1288,"y":1,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-45.png":
+{
+	"frame": {"x":1288,"y":118,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-46.png":
+{
+	"frame": {"x":1288,"y":235,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+},
+"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-47.png":
+{
+	"frame": {"x":1288,"y":352,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":115},
+	"sourceSize": {"w":115,"h":115}
+}},
+"animations": {
+	"png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics": ["png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-0.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-1.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-2.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-3.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-4.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-5.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-6.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-7.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-8.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-9.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-10.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-11.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-12.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-13.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-14.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-15.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-16.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-17.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-18.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-19.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-20.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-21.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-22.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-23.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-24.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-25.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-26.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-27.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-28.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-29.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-30.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-31.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-32.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-33.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-34.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-35.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-36.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-37.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-38.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-39.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-40.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-41.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-42.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-43.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-44.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-45.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-46.png","png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-47.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "explosion.png",
+	"format": "RGBA8888",
+	"size": {"w":1404,"h":468},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:150ffe80f43e1b1e8c3b318bc319daad:7505b62df2dd1e86a5435d9352fac3ac:900e1fb3093a9a6ecb2b2b49071c44f7$"
+}
+}
