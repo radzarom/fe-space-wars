@@ -170,30 +170,30 @@ function gameLoop(delta, direction) {
     }
 }
 
-const loader = PIXI.Loader.shared;
-function animateExplosion(thisPlayer){  
+// const loader = PIXI.Loader.shared;
+// function animateExplosion(thisPlayer){  
   
-    loader.add('tileset', '../graphics/explosionTileSet.png')
-    .load(setup);
+//     loader.add('tileset', '../graphics/explosionTileSet.png')
+//     .load(setup);
 
-    function setup(loader, resources){
-        const textures = [];
-        for(let i = 1; i< 21 ; i++){
-            const texture = PIXI.Texture.from(`explosionTileSet${i}.png`);
-            textures.push(texture);
-        }        
-        const x = thisPlayer.x;
-        const y = thisPlayer.y;
-        thisPlayer = new PIXI.AnimatedSprite(textures);
-        thisPlayer.position.set(x,y);
-        app.stage.addChild(thisPlayer);
-        thisPlayer.play();
-    }
-}
+//     function setup(loader, resources){
+//         const textures = [];
+//         for(let i = 1; i< 21 ; i++){
+//             const texture = PIXI.Texture.from(`explosionTileSet${i}.png`);
+//             textures.push(texture);
+//         }        
+//         const x = thisPlayer.x;
+//         const y = thisPlayer.y;
+//         thisPlayer = new PIXI.AnimatedSprite(textures);
+//         thisPlayer.position.set(x,y);
+//         app.stage.addChild(thisPlayer);
+//         thisPlayer.play();
+//     }
+// }
 
 function endGameOnWin() { 
-    animateExplosion(opponent);
-    /*
+    // animateExplosion(opponent);
+    
     app.stop()
 
     const winnerIs = document.createElement('p')
@@ -201,7 +201,7 @@ function endGameOnWin() {
     winnerIs.innerText = `Winner is ${username}`
 
     document.getElementById('body').innerHTML = ""
-    document.getElementById('body').appendChild(winnerIs)*/
+    document.getElementById('body').appendChild(winnerIs)
 }
 
 function endGameOnLoss() {
