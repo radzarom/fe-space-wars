@@ -22,6 +22,7 @@ body, h1,h2, h3, h4, h5, h6, p, ol, ul {
 body {
   font-family: 'Audiowide', cursive;
   height: 100%;
+  user-select: none;
 }
 
 ol, ul {
@@ -177,6 +178,7 @@ canvas{
 
   #winlosscontainer{
     display: flex;
+    flex-direction: column;
     position:absolute;
     top:0;
     left:0;
@@ -190,9 +192,15 @@ canvas{
     color:white;
     font-size: 3vw;
     text-align: center;
+    
   }
 
   #winlossMsg span {
     color: red;
+  }
+
+  #replayButton {
+    display:block;
+    width: 200px;
   }
   

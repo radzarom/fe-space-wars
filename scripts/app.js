@@ -1,8 +1,7 @@
-//import { Loader } from '@pixi/loaders';
-
-console.log(PIXI);
 
 let app = new PIXI.Application({ width: 1400, height: 800 });
+const loader = PIXI.Loader.shared;
+loader.add("tileset", "../explosion/explosions2.json").load(setupExplosion);
 
 let soundtrack = new Howl({
   src: ["../sound/soundtrack.mp3"],
@@ -43,12 +42,13 @@ let opponentBullets = [];
 let bulletsReceived = [];
 
 function countdown() {
-  console.log("countdown");
+  
   let count = 5;
-  const body = document.querySelector("body");
+  const gameDiv = document.getElementById("gameDiv");
+  gameDiv.style.height = "100%"
   const countDownContainer = document.createElement("div");
   countDownContainer.setAttribute("id", "countDownContainer");
-  body.appendChild(countDownContainer);
+  gameDiv.appendChild(countDownContainer);
 
   const countDownText = document.createElement("p");
   countDownContainer.appendChild(countDownText);
@@ -62,9 +62,12 @@ function countdown() {
       countDownText.remove();
       countDownContainer.remove();
       clearInterval(interval);
+      gameDiv.style.height = "auto"
       createGame();
     }
   }, 1000);
+
+  
 }
 
 //Set up DOM for game, adds background, keyboard mouse interactivity in a gameloop
@@ -96,15 +99,16 @@ function createGame() {
   opponentName.setAttribute("id", "playerName");
   opponentName.innerText = otherPlayer;
 
-  
+  currentPlayerHealth.style.backgroundColor = "green";
+  currentOpponentHealth.style.backgroundColor = "green";
 
   //box for pixi app
-  const gameDiv = document.createElement("div");
-  gameDiv.setAttribute("id", "gameDiv");
-  document.getElementById("body").appendChild(gameDiv);
+  // const gameDiv = document.createElement("div");
+  // gameDiv.setAttribute("id", "gameDiv");
+  // document.getElementById("body").appendChild(gameDiv);
 
   //append app to in the DOM
-  document.querySelector("#gameDiv").appendChild(app.view);
+  document.getElementById("gameDiv").appendChild(app.view);
 
   //add them to DOM
   document.getElementById("gameDiv").appendChild(playerHealthBar);
@@ -176,28 +180,29 @@ function gameLoop(delta, direction) {
   }
 }
 
-function animateExplosion(thisPlayer) {
-  const loader = PIXI.Loader.shared;
-  loader.add("tileset", "../explosion/explosions2.json").load(setup);
-  function setup(loader, resources) {
-    const textures = [];
-    for (let i = 0; i < 64; i++) {
-      const texture = PIXI.Texture.from(`explosion2-${i}.png`);
-      textures.push(texture);
-    }
-    const x = thisPlayer.x;
-    const y = thisPlayer.y;
-    app.stage.removeChild(thisPlayer);
-
-    const explosion = new PIXI.AnimatedSprite(textures);
-    explosion.anchor.set(0.5);
-    explosion.position.set(x, y);
-    explosion.scale.set(1, 1);
-    app.stage.addChild(explosion);
-    explosion.play();
-    explosion.loop = false;
-    explosion.animationSpeed = 0.5;
+function setupExplosion(loader, resources) {
+  textures = [];
+  for (let i = 0; i < 64; i++) {
+    const texture = PIXI.Texture.from(`explosion2-${i}.png`);
+    textures.push(texture);
   }
+}
+
+function animateExplosion(thisPlayer) {
+  
+  const x = thisPlayer.x;
+  const y = thisPlayer.y;
+  app.stage.removeChild(thisPlayer);
+
+  const explosion = new PIXI.AnimatedSprite(textures);
+  explosion.anchor.set(0.5);
+  explosion.position.set(x, y);
+  explosion.scale.set(1, 1);
+  app.stage.addChild(explosion);
+  explosion.play();
+  explosion.loop = false;
+  explosion.animationSpeed = 0.5;
+
 }
 
 function makeWinLossScreen(message) {
@@ -210,6 +215,13 @@ function makeWinLossScreen(message) {
   winlossContainer.appendChild(winlossMsg);
   winlossMsg.setAttribute("id", "winlossMsg");
   winlossMsg.innerHTML = message;
+
+  const replay = document.createElement("button");
+  replay.setAttribute("id", "replayButton");
+  replay.setAttribute("class", "button-85")
+  replay.setAttribute("onClick", "restart()")
+  replay.innerText = "Start Again"
+  winlossContainer.appendChild(replay);
 }
 
 function endGameOnWin() {
