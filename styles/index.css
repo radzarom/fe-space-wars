@@ -113,6 +113,10 @@ canvas{
     color: white;
   }
 
+  #gameDiv {
+    position:relative;
+  }
+
   #playerhealthbar {
     position:absolute;
     top: 10px;
@@ -155,15 +159,41 @@ canvas{
     font-size: 1.3rem;
   }
 
-  #countDownText{
-    color:white;
-    font-size: 5rem;
-    text-align: center;
-    
-  }
   #countDownContainer{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
   }
+  
+  #countDownText{
+    color:white;
+    font-size: 5rem;
+    text-align: center;
+  }
+
+  #countDownText span {
+    color: rgb(30, 221, 59);
+  }
+
+  #winlosscontainer{
+    display: flex;
+    position:absolute;
+    top:0;
+    left:0;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  #winlossMsg{
+    color:white;
+    font-size: 3vw;
+    text-align: center;
+  }
+
+  #winlossMsg span {
+    color: red;
+  }
+  

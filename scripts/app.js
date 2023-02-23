@@ -52,11 +52,11 @@ function countdown() {
   const countDownText = document.createElement("p");
   countDownContainer.appendChild(countDownText);
   countDownText.setAttribute("id", "countDownText");
-  countDownText.innerText = "Get Ready\n" + count;
+  countDownText.innerHTML = "<span>Get Ready</span><br/>" + count;
 
   let interval = setInterval(() => {
     count -= 1;
-    countDownText.innerText = "Get Ready\n" + count;
+    countDownText.innerHTML = "<span>Get Ready</span><br/>" + count;
     if (count <= 0) {
       countDownText.remove();
       countDownContainer.remove();
@@ -95,15 +95,7 @@ function createGame() {
   opponentName.setAttribute("id", "playerName");
   opponentName.innerText = otherPlayer;
 
-  //add them to DOM
-  document.getElementById("body").appendChild(playerHealthBar);
-  document.getElementById("body").appendChild(opponentHealthBar);
-  document.getElementById("playerhealthbar").appendChild(currentPlayerHealth);
-  document
-    .getElementById("opponenthealthbar")
-    .appendChild(currentOpponentHealth);
-  document.getElementById("playerhealthbar").appendChild(playerName);
-  document.getElementById("opponenthealthbar").appendChild(opponentName);
+  
 
   //box for pixi app
   const gameDiv = document.createElement("div");
@@ -112,6 +104,14 @@ function createGame() {
 
   //append app to in the DOM
   document.querySelector("#gameDiv").appendChild(app.view);
+
+  //add them to DOM
+  document.getElementById("gameDiv").appendChild(playerHealthBar);
+  document.getElementById("gameDiv").appendChild(opponentHealthBar);
+  document.getElementById("playerhealthbar").appendChild(currentPlayerHealth);
+  document.getElementById("opponenthealthbar").appendChild(currentOpponentHealth);
+  document.getElementById("playerhealthbar").appendChild(playerName);
+  document.getElementById("opponenthealthbar").appendChild(opponentName);
 
   //renders 60 star shapes in background
   for (let i = 0; i < 150; i++) {
@@ -166,7 +166,7 @@ function gameLoop(delta, direction) {
       username,
       angle,
       bullets: bulletsToSend,
-      playerHealth
+      playerHealth,
     };
 
     bulletsToSend = [];
@@ -184,34 +184,50 @@ function animateExplosion(thisPlayer) {
       const texture = PIXI.Texture.from(`explosion2-${i}.png`);
       textures.push(texture);
     }
-    thisPlayer = new PIXI.AnimatedSprite(textures);
-    thisPlayer.position.set(400, 400);
-    thisPlayer.scale.set(1, 1);
-    app.stage.addChild(thisPlayer);
-    thisPlayer.play();
-   // drag.loop = false;
-   thisPlayer.animationSpeed = 0.5;
+    const x = thisPlayer.x;
+    const y = thisPlayer.y;
+    app.stage.removeChild(thisPlayer);
+
+    const explosion = new PIXI.AnimatedSprite(textures);
+    explosion.anchor.set(0.5);
+    explosion.position.set(x, y);
+    explosion.scale.set(1, 1);
+    app.stage.addChild(explosion);
+    explosion.play();
+    explosion.loop = false;
+    explosion.animationSpeed = 0.5;
   }
 }
 
+function makeWinLossScreen(message) {
+  const gameDiv = document.getElementById("gameDiv");
+  const winlossContainer = document.createElement("div");
+  winlossContainer.setAttribute("id", "winlosscontainer");
+  gameDiv.appendChild(winlossContainer);
+
+  const winlossMsg = document.createElement("p");
+  winlossContainer.appendChild(winlossMsg);
+  winlossMsg.setAttribute("id", "winlossMsg");
+  winlossMsg.innerHTML = message;
+}
+
 function endGameOnWin() {
-  
-  animateExplosion(player);
-  
-  
-    // app.stop()
+  animateExplosion(opponent);
+  makeWinLossScreen(`<span>GAME OVER</span><br/>Player ${username}, you won!`);
 
-    // const winnerIs = document.createElement('p')
-    // winnerIs.setAttribute('id', 'winnerIs')
-    // winnerIs.innerText = `Winner is ${username}`
+  // app.stop()
 
-    // document.getElementById('body').innerHTML = ""
-    // document.getElementById('body').appendChild(winnerIs)
-    
+  // const winnerIs = document.createElement('p')
+  // winnerIs.setAttribute('id', 'winnerIs')
+  // winnerIs.innerText = `Winner is ${username}`
+
+  // document.getElementById('body').innerHTML = ""
+  // document.getElementById('body').appendChild(winnerIs)
 }
 
 function endGameOnLoss() {
-  animateExplosion(opponent);
+  animateExplosion(player);
+  makeWinLossScreen(`<span>GAME OVER</span><br/>Player ${username}, you lost...`);
   // app.stop();
 
   // const loserIs = document.createElement("p");
