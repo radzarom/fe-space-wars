@@ -1,4 +1,4 @@
-loadingContainer.style.display = "none";
+
 const showText = document.getElementById("showInstructions");
 
 function showInstructions() {

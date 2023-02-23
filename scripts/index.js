@@ -26,6 +26,57 @@ const site = "ws://spacewarserver.eu-4.evennode.com";
 
 let ws = 0;
 
+function restart() {
+
+  ws = 0
+  app.stop()
+  app = new PIXI.Application({ width: 1400, height: 800 });
+  loader.destroy()
+
+  teamName = ""
+  otherPlayer = "";
+  playerHealth = 100
+  opponentHealth = 100
+  player.dx = 0;
+  player.dy = 0;
+  gameStarted = false;
+  gameEnded = false;
+  
+  const gameDiv = document.getElementById("gameDiv");
+
+  gameDiv.innerHTML = `
+  <div id="instructions">
+      <button onClick="showInstructions()" class="button-85">Instructions</button>
+      <div id="showInstructions">
+          <p>use WASD to move</p>
+          <p>turn to shoot with mouse and click</p>
+          <p>destroy your enemy and survive</p>
+      </div>
+  </div>
+  <div id="outerDiv">
+      <div id="mainContainer">
+          <h1>Space Wars</h1>
+          <div id="buttonContainer">
+              <input id="playername-input" class="button-85" type="text" placeholder="enter your name here"
+                  value=""></input>
+              <span id="information"></span>
+              <button onclick="startGame()" id="startButton" class="button-85" role="button">Start Game</button>
+          </div>
+          <span id="findingPlayer"></span>
+          <div id="loadingContainer">
+              <span class="loader"></span>
+          </div>
+      </div>
+  </div>`
+
+  loadingContainer.style.display = "none";
+
+  if(username !== "") {
+    document.getElementById("playername-input").value = username;
+  }
+}
+restart()
+
 async function startGame() {
   let usernameInput = document.getElementById("playername-input");
 
@@ -45,6 +96,7 @@ async function startGame() {
 
   function removeStarting() {
     document.getElementById("outerDiv").remove();
+    document.getElementById("instructions").remove();
   }
 
   ws.onmessage = (webSocketMessage) => {
