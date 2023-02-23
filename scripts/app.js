@@ -43,6 +43,7 @@ let opponentBullets = [];
 let bulletsReceived = [];
 
 function countdown() {
+  console.log("countdown");
   let count = 5;
   const body = document.querySelector("body");
   const countDownContainer = document.createElement("div");

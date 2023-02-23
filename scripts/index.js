@@ -28,7 +28,13 @@ let ws = 0;
 
 async function startGame() {
   let usernameInput = document.getElementById("playername-input");
+
   username = usernameInput.value;
+
+  if (username === "") {
+    document.getElementById("information").innerText = "Please enter a name";
+    return;
+  }
 
   ws = new WebSocket(site + "/unmatched?username=" + username);
 
@@ -38,18 +44,19 @@ async function startGame() {
   };
 
   function removeStarting() {
-    document.getElementById("grid-container").remove();
+    document.getElementById("outerDiv").remove();
   }
 
   ws.onmessage = (webSocketMessage) => {
     const messageBody = JSON.parse(webSocketMessage.data);
 
     if (messageBody.message === "username") {
-      document.getElementById("connection-feedback").innerText =
-        "User name taken";
+      document.getElementById("information").innerText = "User name taken";
     } else if (messageBody.message === "waiting") {
-      document.getElementById("connection-feedback").innerText =
+      document.getElementById("findingPlayer").innerText =
         "Waiting for another player...";
+      loadingContainer.style.display = "block";
+      document.getElementById("buttonContainer").remove();
 
       return;
     } else if (messageBody.message === "paired") {
@@ -137,10 +144,9 @@ async function playGame() {
         "currentopponenthealth"
       ).style.width = `${opponentHealth}%`;
 
-      if(opponentHealth <= 30) {
-        document.getElementById(
-          "currentopponenthealth"
-        ).style.backgroundColor = "red";
+      if (opponentHealth <= 30) {
+        document.getElementById("currentopponenthealth").style.backgroundColor =
+          "red";
       }
 
       for (let bullet of bulletsReceived) {
