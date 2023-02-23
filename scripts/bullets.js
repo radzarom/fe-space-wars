@@ -91,6 +91,12 @@ function updateBullets(delta, direction) {
             }
             opponentBullets[i].dead = true;
             document.getElementById('currentplayerhealth').style.width = `${playerHealth}%`
+
+            if(playerHealth <= 30) {
+                document.getElementById(
+                  "currentplayerhealth"
+                ).style.backgroundColor = "red";
+              }
         }
         if(opponentBullets[i].y < 0) {
             opponentBullets[i].dead = true;

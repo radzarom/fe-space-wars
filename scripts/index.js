@@ -133,10 +133,15 @@ async function playGame() {
       bulletsReceived = messageBody.bullets;
       opponentHealth = messageBody.playerHealth;
 
-      console.log(opponentHealth);
       document.getElementById(
         "currentopponenthealth"
       ).style.width = `${opponentHealth}%`;
+
+      if(opponentHealth <= 30) {
+        document.getElementById(
+          "currentopponenthealth"
+        ).style.backgroundColor = "red";
+      }
 
       for (let bullet of bulletsReceived) {
         opponentBullets.push(
