@@ -20,6 +20,7 @@ let otherBullets = [];
 const speed = 10;
 
 let gameStarted = false;
+let gameEnded = false
 
 const site = "ws://spacewarserver.eu-4.evennode.com";
 
@@ -100,13 +101,19 @@ async function playGame() {
       return;
     }
 
+    if(gameEnded) {
+      return;
+    }
+
     const messageBody = JSON.parse(webSocketMessage.data);
 
     if (messageBody.lost) {
       if (username !== messageBody.username) {
+        gameEnded = true
         endGameOnWin();
         return;
       } else {
+        gameEnded = true
         endGameOnLoss();
         return;
       }
