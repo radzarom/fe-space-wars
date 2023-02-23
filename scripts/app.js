@@ -176,25 +176,22 @@ function gameLoop(delta, direction) {
   }
 }
 
-
 function animateExplosion() {
   const loader = PIXI.Loader.shared;
-  loader.add("tileset", "../explosion/explosion.json").load(setup);
-
+  loader.add("tileset", "../explosion/explosions2.json").load(setup);
   function setup(loader, resources) {
     const textures = [];
-    for (let i = 0; i < 47; i++) {
-      const texture = PIXI.Texture.from(
-        `png-transparent-cartoon-explosion-sprite-animation-drawing-pixel-art-special-effects-walk-cycle-computer-graphics-${i}.png`
-      );
+    for (let i = 0; i < 64; i++) {
+      const texture = PIXI.Texture.from(`explosion2-${i}.png`);
       textures.push(texture);
     }
     const drag = new PIXI.AnimatedSprite(textures);
     drag.position.set(400, 400);
-    drag.scale.set(2, 2);
+    drag.scale.set(1, 1);
     app.stage.addChild(drag);
     drag.play();
-    drag.animationSpeed = 0.8
+   // drag.loop = false;
+    drag.animationSpeed = 0.5;
   }
 }
 
@@ -209,6 +206,7 @@ function endGameOnWin() {
 
     document.getElementById('body').innerHTML = ""
     document.getElementById('body').appendChild(winnerIs)
+    */
 }
 
 function endGameOnLoss() {
