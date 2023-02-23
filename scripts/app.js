@@ -151,7 +151,6 @@ function createGame() {
   window.addEventListener("keyup", keysUp);
 
   soundtrack.play();
-  animateExplosion();
 }
 
 //anything inside of here gets ran on each tick, i think...
@@ -167,7 +166,7 @@ function gameLoop(delta, direction) {
       username,
       angle,
       bullets: bulletsToSend,
-      playerHealth,
+      playerHealth
     };
 
     bulletsToSend = [];
@@ -176,7 +175,7 @@ function gameLoop(delta, direction) {
   }
 }
 
-function animateExplosion() {
+function animateExplosion(thisPlayer) {
   const loader = PIXI.Loader.shared;
   loader.add("tileset", "../explosion/explosions2.json").load(setup);
   function setup(loader, resources) {
@@ -185,37 +184,40 @@ function animateExplosion() {
       const texture = PIXI.Texture.from(`explosion2-${i}.png`);
       textures.push(texture);
     }
-    const drag = new PIXI.AnimatedSprite(textures);
-    drag.position.set(400, 400);
-    drag.scale.set(1, 1);
-    app.stage.addChild(drag);
-    drag.play();
+    thisPlayer = new PIXI.AnimatedSprite(textures);
+    thisPlayer.position.set(400, 400);
+    thisPlayer.scale.set(1, 1);
+    app.stage.addChild(thisPlayer);
+    thisPlayer.play();
    // drag.loop = false;
-    drag.animationSpeed = 0.5;
+   thisPlayer.animationSpeed = 0.5;
   }
 }
 
 function endGameOnWin() {
-  animateExplosion();
-  /*
-    app.stop()
+  
+  animateExplosion(player);
+  
+  
+    // app.stop()
 
-    const winnerIs = document.createElement('p')
-    winnerIs.setAttribute('id', 'winnerIs')
-    winnerIs.innerText = `Winner is ${username}`
+    // const winnerIs = document.createElement('p')
+    // winnerIs.setAttribute('id', 'winnerIs')
+    // winnerIs.innerText = `Winner is ${username}`
 
-    document.getElementById('body').innerHTML = ""
-    document.getElementById('body').appendChild(winnerIs)
-    */
+    // document.getElementById('body').innerHTML = ""
+    // document.getElementById('body').appendChild(winnerIs)
+    
 }
 
 function endGameOnLoss() {
-  app.stop();
+  animateExplosion(opponent);
+  // app.stop();
 
-  const loserIs = document.createElement("p");
-  loserIs.setAttribute("id", "loserIs");
-  loserIs.innerText = `Loser is ${otherPlayer}`;
+  // const loserIs = document.createElement("p");
+  // loserIs.setAttribute("id", "loserIs");
+  // loserIs.innerText = `Loser is ${otherPlayer}`;
 
-  document.getElementById("body").innerHTML = "";
-  document.getElementById("body").appendChild(loserIs);
+  // document.getElementById("body").innerHTML = "";
+  // document.getElementById("body").appendChild(loserIs);
 }
