@@ -7,16 +7,27 @@ const backgroundTexture = PIXI.Texture.from('../graphics/spaceBackground.png');
   const backgroundSprite = new PIXI.TilingSprite(backgroundTexture, app.screen.width, app.screen.height);
   backgroundSprite.tileScale.set(1, 1.2);
 
-const moonSprite = new PIXI.Sprite.from('../graphics/asteroid1.png');
-moonSprite.x = 300;
-moonSprite.y = 500;
-// moonSprite.scale.set(0.4)
-moonSprite.anchor.set(0.5);
+const asteroid1 = new PIXI.Sprite.from('../graphics/asteroid1.png');
+asteroid1.x = 300;
+asteroid1.y = 500;
+asteroid1.anchor.set(0.5);
 
-const moon2Sprite = new PIXI.Sprite.from('../graphics/asteroid2.png');
-moon2Sprite.x = 1200;
-moon2Sprite.y = 200;
-moon2Sprite.anchor.set(0.5);
+const asteroid2 = new PIXI.Sprite.from('../graphics/asteroid2.png');
+asteroid2.x = 1200;
+asteroid2.y = 200;
+asteroid2.anchor.set(0.5);
+asteroid2.scale.set(0.4)
+
+const asteroid3 = new PIXI.Sprite.from('../graphics/asteroid2.png');
+asteroid3.x = 800;
+asteroid3.y = 350;
+asteroid3.anchor.set(0.5);
+
+const asteroid4 = new PIXI.Sprite.from('../graphics/asteroid2.png');
+asteroid4.x = 100;
+asteroid4.y = 600;
+asteroid4.anchor.set(0.5);
+asteroid4.scale.set(0.1)
 
 
 let soundtrack = new Howl({
@@ -131,8 +142,10 @@ function createGame() {
   document.getElementById("gameDiv").appendChild(app.view);
   
   app.stage.addChild(backgroundSprite);
-  app.stage.addChild(moonSprite);
-  app.stage.addChild(moon2Sprite);
+  app.stage.addChild(asteroid1);
+  app.stage.addChild(asteroid2);
+  app.stage.addChild(asteroid3);
+  app.stage.addChild(asteroid4);
 
   //add them to DOM
   document.getElementById("gameDiv").appendChild(playerHealthContainer);
@@ -191,18 +204,32 @@ function gameLoop(delta, direction) {
   bulletsReceived = [];
   backgroundSprite.tilePosition.x -= 3;
 
-  moonSprite.x -= 1;
-  moonSprite.rotation += 0.01
-  if(moonSprite.x < -400) {
-    moonSprite.x = app.view.width + 60;
-    moonSprite.y = Math.random() * app.view.height + 1
+  asteroid1.x -= 1;
+  asteroid1.rotation += 0.01
+  if(asteroid1.x < -400) {
+    asteroid1.x = app.view.width + 60;
+    asteroid1.y = Math.random() * app.view.height + 1
   }
 
-  moon2Sprite.x -= 2;
-  moon2Sprite.rotation -= 0.02
-  if(moon2Sprite.x < -400) {
-    moon2Sprite.x = app.view.width + 40;
-    moon2Sprite.y = Math.random() * app.view.height + 1
+  asteroid2.x -= 2;
+  asteroid2.rotation -= 0.02
+  if(asteroid2.x < -400) {
+    asteroid2.x = app.view.width + 40;
+    asteroid2.y = Math.random() * app.view.height + 1
+  }
+
+  asteroid3.x -= 2;
+  asteroid3.rotation -= 0.02
+  if(asteroid3.x < -400) {
+    asteroid3.x = app.view.width + 40;
+    asteroid3.y = Math.random() * app.view.height + 1
+  }
+
+  asteroid4.x -= 2;
+  asteroid4.rotation += 0.02
+  if(asteroid4.x < -400) {
+    asteroid4.x = app.view.width + 40;
+    asteroid4.y = Math.random() * app.view.height + 1
   }
 
   if (!gameEnded) {
