@@ -205,7 +205,7 @@ function gameLoop(delta, direction) {
     moon2Sprite.y = Math.random() * app.view.height + 1
   }
 
-  if (ws != 0) {
+  if (!gameEnded) {
     const messageBody = {
       x: player.x,
       y: player.y,
@@ -248,6 +248,7 @@ function animateExplosion(thisPlayer) {
 }
 
 function makeWinLossScreen(message) {
+  
   const gameDiv = document.getElementById("gameDiv");
   const winlossContainer = document.createElement("div");
   winlossContainer.setAttribute("id", "winlosscontainer");

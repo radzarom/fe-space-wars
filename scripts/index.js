@@ -129,9 +129,13 @@ function declareEndGame() {
   const messageBody = {
     lost: true,
     username,
+    otherPlayer
   };
 
-  ws.send(JSON.stringify(messageBody));
+  if (!gameEnded) {
+
+    ws.send(JSON.stringify(messageBody));
+  }
 }
 
 async function playGame() {
