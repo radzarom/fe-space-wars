@@ -178,7 +178,6 @@ function createGame() {
 
   //add asteroids to the game
 
-  asteroidPos = 3;
   if(asteroidPos === 0){
     asteroidGame1.x = 400;
     asteroidGame1.y = 300;
