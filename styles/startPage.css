@@ -20,8 +20,11 @@
   }
 
   #logo {
-    width:100%;
+    width:500px;
+    margin: auto;
+    display:block;
     animation: pulse 2s ease-in-out infinite;
+    padding-bottom:20px;
   }
 
   @keyframes pulse {
@@ -39,7 +42,7 @@
 #playername-input {
   display: block;
   border: 1px solid white;
-  width: 50%;
+  width: 300px;
   height: 30px;
   border-radius: 30px;
   font-size: 20px;
@@ -49,7 +52,7 @@
 
 #startButton {
   display: block;
-  width: 50%;
+  width: 300px;
   margin: 0 auto;
   margin-top: 40px;
 }

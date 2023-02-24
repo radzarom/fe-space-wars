@@ -27,7 +27,7 @@ const asteroid4 = new PIXI.Sprite.from('../graphics/asteroid2.png');
 asteroid4.x = 100;
 asteroid4.y = 600;
 asteroid4.anchor.set(0.5);
-asteroid4.scale.set(0.1)
+asteroid4.scale.set(0.3);
 
 
 let soundtrack = new Howl({
@@ -289,7 +289,8 @@ function makeWinLossScreen(message) {
   const replay = document.createElement("button");
   replay.setAttribute("id", "replayButton");
   replay.setAttribute("class", "button-85")
-  replay.setAttribute("onClick", "restart()")
+  replay.setAttribute("onClick", "restart();startGame()");
+
   replay.innerText = "Start Again"
   winlossContainer.appendChild(replay);
 }
