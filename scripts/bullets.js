@@ -97,13 +97,13 @@ function updateBullets(delta, direction) {
     }
 
     if (
-        bullets[i].y < 0 ||
-        bullets[i].x < 0 ||
-        bullets[i].y > app.view.height  ||
-        bullets[i].x > app.view.width
-      ) {
-        bullets[i].dead = true;
-      }
+      bullets[i].y < 0 ||
+      bullets[i].x < 0 ||
+      bullets[i].y > app.view.height ||
+      bullets[i].x > app.view.width
+    ) {
+      bullets[i].dead = true;
+    }
   }
 
   for (let i = 0; i < opponentBullets.length; i++) {
@@ -112,10 +112,11 @@ function updateBullets(delta, direction) {
     opponentBullets[i].position.x +=
       opponentBullets[i].direction.x * bulletSpeed;
     //conditions for determining if bullet is offscreen go here, set to dead
-    if (
-      collisionDetection(player, opponentBullets[i]) ||
-      asteroidDetection(asteroidGame, opponentBullets[i])
-    ) {
+    if (asteroidDetection(asteroidGame, opponentBullets[i])) {
+      opponentBullets[i].dead = true;
+    }
+
+    if (collisionDetection(player, opponentBullets[i])) {
       playerHealth -= 10;
 
       if (playerHealth <= 0) {
@@ -134,8 +135,8 @@ function updateBullets(delta, direction) {
     if (
       opponentBullets[i].y < 0 ||
       opponentBullets[i].x < 0 ||
-      opponentBullets[i].y > app.view.height  ||
-      opponentBullets[i].x > app.view.width 
+      opponentBullets[i].y > app.view.height ||
+      opponentBullets[i].x > app.view.width
     ) {
       opponentBullets[i].dead = true;
     }
