@@ -96,7 +96,7 @@ function createGame() {
   const currentOpponentHealth = document.createElement("div");
   currentOpponentHealth.setAttribute("id", "currentopponenthealth");
   const opponentName = document.createElement("p");
-  opponentName.setAttribute("id", "playerName");
+  opponentName.setAttribute("id", "opponentName");
   opponentName.innerText = otherPlayer;
 
   currentPlayerHealth.style.backgroundColor = "green";
