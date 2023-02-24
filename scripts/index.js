@@ -34,6 +34,7 @@ function restart() {
   app.stop()
   app = new PIXI.Application({ width: 1400, height: 800 });
   loader.destroy()
+  soundtrack.stop();
 
   teamName = ""
   otherPlayer = "";
