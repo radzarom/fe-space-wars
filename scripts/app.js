@@ -243,7 +243,8 @@ function animateExplosion(thisPlayer) {
   explosion.play();
   explosion.loop = false;
   explosion.animationSpeed = 0.5;
-
+  explosion.onComplete = () => { 
+    app.stage.removeChild(explosion)};
 }
 
 function makeWinLossScreen(message) {
