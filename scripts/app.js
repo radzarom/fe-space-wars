@@ -1,34 +1,66 @@
-
-let app = new PIXI.Application({ width: 1400, height: 800});
+let app = new PIXI.Application({ width: 1400, height: 800 });
 const loader = PIXI.Loader.shared;
 loader.add("tileset", "../explosion/explosions2.json").load(setupExplosion);
 
-const backgroundTexture = PIXI.Texture.from('../graphics/spaceBackground.png');
-  const backgroundSprite = new PIXI.TilingSprite(backgroundTexture, app.screen.width, app.screen.height);
-  backgroundSprite.tileScale.set(1, 1.2);
+const backgroundTexture = PIXI.Texture.from("../graphics/spaceBackground.png");
+const backgroundSprite = new PIXI.TilingSprite(
+  backgroundTexture,
+  app.screen.width,
+  app.screen.height
+);
+backgroundSprite.tileScale.set(1, 1.2);
 
-const asteroid1 = new PIXI.Sprite.from('../graphics/asteroid1.png');
+const asteroid1 = new PIXI.Sprite.from("../graphics/asteroid1.png");
 asteroid1.x = 300;
 asteroid1.y = 500;
 asteroid1.anchor.set(0.5);
 
-const asteroid2 = new PIXI.Sprite.from('../graphics/asteroid2.png');
+const asteroid2 = new PIXI.Sprite.from("../graphics/asteroid2.png");
 asteroid2.x = 1200;
 asteroid2.y = 200;
 asteroid2.anchor.set(0.5);
-asteroid2.scale.set(0.4)
+asteroid2.scale.set(0.4);
 
-const asteroid3 = new PIXI.Sprite.from('../graphics/asteroid2.png');
+const asteroid3 = new PIXI.Sprite.from("../graphics/asteroid2.png");
 asteroid3.x = 800;
 asteroid3.y = 350;
 asteroid3.anchor.set(0.5);
 
-const asteroid4 = new PIXI.Sprite.from('../graphics/asteroid2.png');
+const asteroid4 = new PIXI.Sprite.from("../graphics/asteroid2.png");
 asteroid4.x = 100;
 asteroid4.y = 600;
 asteroid4.anchor.set(0.5);
 asteroid4.scale.set(0.3);
 
+const asteroidGame = new PIXI.Sprite.from("../graphics/gameAsteroid.png");
+asteroidGame.x = 300;
+asteroidGame.y = 600;
+asteroidGame.anchor.set(0.5);
+asteroidGame.scale.set(1.5);
+
+let hitAsteroid = false;
+function asteroidCollisionDetection(asteroid) {
+  const asteroidX = asteroid.x;
+  const asteroidY = asteroid.y;
+  const asteroidRadius = 50;
+  const playerX = player.x;
+  const playerY = player.y;
+  const playerRadius = 23;
+  const dx = asteroidX - playerX;
+  const dy = asteroidY - playerY;
+  const distance = Math.sqrt(dx * dx + dy * dy);
+
+  if (distance < asteroidRadius + playerRadius) {
+    if (!hitAsteroid) {
+      player.dx = -player.dx / 4;
+      player.dy = -player.dy / 4;
+      hitAsteroid = true;
+    }
+  }
+  else{
+    hitAsteroid = false;
+  }
+}
 
 let soundtrack = new Howl({
   src: ["../sound/soundtrack.mp3"],
@@ -69,10 +101,9 @@ let opponentBullets = [];
 let bulletsReceived = [];
 
 function countdown() {
-  
   let count = 5;
   const gameDiv = document.getElementById("gameDiv");
-  gameDiv.style.height = "100%"
+  gameDiv.style.height = "100%";
   const countDownContainer = document.createElement("div");
   countDownContainer.setAttribute("id", "countDownContainer");
   gameDiv.appendChild(countDownContainer);
@@ -89,12 +120,10 @@ function countdown() {
       countDownText.remove();
       countDownContainer.remove();
       clearInterval(interval);
-      gameDiv.style.height = "auto"
+      gameDiv.style.height = "auto";
       createGame();
     }
   }, 1000);
-
-  
 }
 
 //Set up DOM for game, adds background, keyboard mouse interactivity in a gameloop
@@ -140,21 +169,26 @@ function createGame() {
 
   //append app to in the DOM
   document.getElementById("gameDiv").appendChild(app.view);
-  
+
   app.stage.addChild(backgroundSprite);
   app.stage.addChild(asteroid1);
   app.stage.addChild(asteroid2);
   app.stage.addChild(asteroid3);
   app.stage.addChild(asteroid4);
+  app.stage.addChild(asteroidGame);
 
   //add them to DOM
   document.getElementById("gameDiv").appendChild(playerHealthContainer);
   document.getElementById("gameDiv").appendChild(opponentHealthContainer);
   document.getElementById("playerHealthContainer").appendChild(playerHealthBar);
   document.getElementById("opponentHealthContainer").appendChild(opponentName);
-  document.getElementById("opponentHealthContainer").appendChild(opponentHealthBar);
+  document
+    .getElementById("opponentHealthContainer")
+    .appendChild(opponentHealthBar);
   document.getElementById("playerhealthbar").appendChild(currentPlayerHealth);
-  document.getElementById("opponenthealthbar").appendChild(currentOpponentHealth);
+  document
+    .getElementById("opponenthealthbar")
+    .appendChild(currentOpponentHealth);
   document.getElementById("playerhealthbar").appendChild(playerName);
 
   // //renders 60 star shapes in background
@@ -201,36 +235,39 @@ function createGame() {
 function gameLoop(delta, direction) {
   updateBullets(delta, direction);
   updatePosition();
+  asteroidCollisionDetection(asteroidGame);
   bulletsReceived = [];
   backgroundSprite.tilePosition.x -= 3;
 
   asteroid1.x -= 1;
-  asteroid1.rotation += 0.01
-  if(asteroid1.x < -400) {
+  asteroid1.rotation += 0.01;
+  if (asteroid1.x < -400) {
     asteroid1.x = app.view.width + 60;
-    asteroid1.y = Math.random() * app.view.height + 1
+    asteroid1.y = Math.random() * app.view.height + 1;
   }
 
   asteroid2.x -= 2;
-  asteroid2.rotation -= 0.02
-  if(asteroid2.x < -400) {
+  asteroid2.rotation -= 0.02;
+  if (asteroid2.x < -400) {
     asteroid2.x = app.view.width + 40;
-    asteroid2.y = Math.random() * app.view.height + 1
+    asteroid2.y = Math.random() * app.view.height + 1;
   }
 
   asteroid3.x -= 2;
-  asteroid3.rotation -= 0.02
-  if(asteroid3.x < -400) {
+  asteroid3.rotation -= 0.02;
+  if (asteroid3.x < -400) {
     asteroid3.x = app.view.width + 40;
-    asteroid3.y = Math.random() * app.view.height + 1
+    asteroid3.y = Math.random() * app.view.height + 1;
   }
 
   asteroid4.x -= 2;
-  asteroid4.rotation += 0.02
-  if(asteroid4.x < -400) {
+  asteroid4.rotation += 0.02;
+  if (asteroid4.x < -400) {
     asteroid4.x = app.view.width + 40;
-    asteroid4.y = Math.random() * app.view.height + 1
+    asteroid4.y = Math.random() * app.view.height + 1;
   }
+
+  asteroidGame.rotation += 0.02;
 
   if (!gameEnded) {
     const messageBody = {
@@ -257,7 +294,6 @@ function setupExplosion(loader, resources) {
 }
 
 function animateExplosion(thisPlayer) {
-  
   const x = thisPlayer.x;
   const y = thisPlayer.y;
   app.stage.removeChild(thisPlayer);
@@ -270,12 +306,12 @@ function animateExplosion(thisPlayer) {
   explosion.play();
   explosion.loop = false;
   explosion.animationSpeed = 0.5;
-  explosion.onComplete = () => { 
-    app.stage.removeChild(explosion)};
+  explosion.onComplete = () => {
+    app.stage.removeChild(explosion);
+  };
 }
 
 function makeWinLossScreen(message) {
-  
   const gameDiv = document.getElementById("gameDiv");
   const winlossContainer = document.createElement("div");
   winlossContainer.setAttribute("id", "winlosscontainer");
@@ -288,36 +324,21 @@ function makeWinLossScreen(message) {
 
   const replay = document.createElement("button");
   replay.setAttribute("id", "replayButton");
-  replay.setAttribute("class", "button-85")
+  replay.setAttribute("class", "button-85");
   replay.setAttribute("onClick", "restart();startGame()");
 
-  replay.innerText = "Start Again"
+  replay.innerText = "Start Again";
   winlossContainer.appendChild(replay);
 }
 
 function endGameOnWin() {
   animateExplosion(opponent);
   makeWinLossScreen(`<span>GAME OVER</span><br/>Player ${username}, you won!`);
-
-  // app.stop()
-
-  // const winnerIs = document.createElement('p')
-  // winnerIs.setAttribute('id', 'winnerIs')
-  // winnerIs.innerText = `Winner is ${username}`
-
-  // document.getElementById('body').innerHTML = ""
-  // document.getElementById('body').appendChild(winnerIs)
 }
 
 function endGameOnLoss() {
   animateExplosion(player);
-  makeWinLossScreen(`<span>GAME OVER</span><br/>Player ${username}, you lost...`);
-  // app.stop();
-
-  // const loserIs = document.createElement("p");
-  // loserIs.setAttribute("id", "loserIs");
-  // loserIs.innerText = `Loser is ${otherPlayer}`;
-
-  // document.getElementById("body").innerHTML = "";
-  // document.getElementById("body").appendChild(loserIs);
+  makeWinLossScreen(
+    `<span>GAME OVER</span><br/>Player ${username}, you lost...`
+  );
 }
