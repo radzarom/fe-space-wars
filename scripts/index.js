@@ -55,7 +55,7 @@ function restart() {
   </div>
   <div id="outerDiv">
       <div id="mainContainer">
-          <h1>Space Wars</h1>
+          <img id="logo" src="../graphics/logo.png"/>
           <div id="buttonContainer">
               <input id="playername-input" class="button-85" type="text" placeholder="enter your name here"
                   value=""></input>

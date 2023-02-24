@@ -53,51 +53,20 @@ canvas{
   max-height: 100vh;
 }
 
-#grid-container {
-    display: grid;
-    width: 100%;
-    height:100%;
-    grid-template-areas:
-      "header header header"
-      ". playername-form instructions";
 
-    grid-template-rows: 25% 50%;
-    grid-template-columns: 30% 40% 30%;
-  }
-  
-  #grid-container > #header {
-    grid-area: header;
-    text-align: center;
-  }
-  
-  #grid-container > #playername-form {
-    grid-area: playername-form;
-   
-  }
-  
-  #grid-container > #instructions {
-    grid-area: instructions;
-    
-  }
+#playername-form {
+  font-family: 'Audiowide', cursive;
+  font-size: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.523);
+  border-radius: 5%;
+  text-align: center;
+  padding-top: 40px;
+  margin: 50px;
+}
 
-  #header img{
-    width: 80%;
-    
-  }
-
-  #playername-form {
-    font-family: 'Audiowide', cursive;
-    font-size: 1.5rem;
-    background-color: rgba(255, 255, 255, 0.523);
-    border-radius: 5%;
-    text-align: center;
-    padding-top: 40px;
-    margin: 50px;
-  }
-
-  #playername-form label {
-    display: block;
-  }
+#playername-form label {
+  display: block;
+}
   /*
   #instructions {
     font-family: 'Audiowide', cursive;
@@ -120,7 +89,11 @@ canvas{
   #playerhealthbar {
     position:absolute;
     top: 10px;
-    left: 10px;
+    left: 0;
+    right:0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
     border: 1px solid silver;
     height: 20px;
     width: 200px;
@@ -128,8 +101,12 @@ canvas{
 
   #opponenthealthbar {
     position:absolute;
-    top: 10px;
-    right: 10px;
+    bottom: 10px;
+    left: 0;
+    right:0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
     border: 1px solid silver;
     height: 20px;
     width: 200px;
@@ -149,7 +126,7 @@ canvas{
 
   #playerName {
     color:white;
-    position: relative;
+    /* position: relative; */
     font-size: 1.3rem;
   }
 
