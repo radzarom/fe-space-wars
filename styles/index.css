@@ -86,11 +86,29 @@ canvas{
     position:relative;
   }
 
-  #playerhealthbar {
+  #playerHealthContainer {
+
     position:absolute;
     top: 10px;
     left: 0;
     right:0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  #opponentHealthContainer {
+    position:absolute;
+    bottom: 10px;
+    left: 0;
+    right:0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  
+  }
+
+  #playerhealthbar {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -100,10 +118,6 @@ canvas{
   }
 
   #opponenthealthbar {
-    position:absolute;
-    bottom: 10px;
-    left: 0;
-    right:0;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -126,11 +140,12 @@ canvas{
 
   #playerName {
     color:white;
-    /* position: relative; */
+    position: relative;
     font-size: 1.3rem;
   }
 
   #opponentName {
+    display: block;
     color:white;
     position: relative;
     font-size: 1.3rem;
