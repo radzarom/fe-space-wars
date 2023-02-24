@@ -1,7 +1,23 @@
 
-let app = new PIXI.Application({ width: 1400, height: 800 });
+let app = new PIXI.Application({ width: 1400, height: 800});
 const loader = PIXI.Loader.shared;
 loader.add("tileset", "../explosion/explosions2.json").load(setupExplosion);
+
+const backgroundTexture = PIXI.Texture.from('../graphics/spaceBackground.png');
+  const backgroundSprite = new PIXI.TilingSprite(backgroundTexture, app.screen.width, app.screen.height);
+  backgroundSprite.tileScale.set(1, 1.2);
+
+const moonSprite = new PIXI.Sprite.from('../graphics/asteroid1.png');
+moonSprite.x = 300;
+moonSprite.y = 500;
+// moonSprite.scale.set(0.4)
+moonSprite.anchor.set(0.5);
+
+const moon2Sprite = new PIXI.Sprite.from('../graphics/asteroid2.png');
+moon2Sprite.x = 1200;
+moon2Sprite.y = 200;
+moon2Sprite.anchor.set(0.5);
+
 
 let soundtrack = new Howl({
   src: ["../sound/soundtrack.mp3"],
@@ -82,6 +98,8 @@ function createGame() {
   opponent.rotation = enemyStartAngle;
 
   //create player health bar
+  const playerHealthContainer = document.createElement("div");
+  playerHealthContainer.setAttribute("id", "playerHealthContainer");
   const playerHealthBar = document.createElement("div");
   playerHealthBar.setAttribute("id", "playerhealthbar");
   const currentPlayerHealth = document.createElement("div");
@@ -91,6 +109,8 @@ function createGame() {
   playerName.innerText = username;
 
   //create opponent health bar
+  const opponentHealthContainer = document.createElement("div");
+  opponentHealthContainer.setAttribute("id", "opponentHealthContainer");
   const opponentHealthBar = document.createElement("div");
   opponentHealthBar.setAttribute("id", "opponenthealthbar");
   const currentOpponentHealth = document.createElement("div");
@@ -109,32 +129,38 @@ function createGame() {
 
   //append app to in the DOM
   document.getElementById("gameDiv").appendChild(app.view);
+  
+  app.stage.addChild(backgroundSprite);
+  app.stage.addChild(moonSprite);
+  app.stage.addChild(moon2Sprite);
 
   //add them to DOM
-  document.getElementById("gameDiv").appendChild(playerHealthBar);
-  document.getElementById("gameDiv").appendChild(opponentHealthBar);
+  document.getElementById("gameDiv").appendChild(playerHealthContainer);
+  document.getElementById("gameDiv").appendChild(opponentHealthContainer);
+  document.getElementById("playerHealthContainer").appendChild(playerHealthBar);
+  document.getElementById("opponentHealthContainer").appendChild(opponentName);
+  document.getElementById("opponentHealthContainer").appendChild(opponentHealthBar);
   document.getElementById("playerhealthbar").appendChild(currentPlayerHealth);
   document.getElementById("opponenthealthbar").appendChild(currentOpponentHealth);
   document.getElementById("playerhealthbar").appendChild(playerName);
-  document.getElementById("opponenthealthbar").appendChild(opponentName);
 
-  //renders 60 star shapes in background
-  for (let i = 0; i < 150; i++) {
-    const star = new PIXI.Graphics();
-    //draws a star at random width and height, with random number of points between 4-8, random radius 5-15
-    star
-      .beginFill(0xadadad)
-      .drawStar(
-        Math.random() * app.screen.width,
-        Math.random() * app.screen.height,
-        Math.random() * 4 + 4,
-        Math.random() * 5 + 1
-      )
-      .endFill();
+  // //renders 60 star shapes in background
+  // for (let i = 0; i < 150; i++) {
+  //   const star = new PIXI.Graphics();
+  //   //draws a star at random width and height, with random number of points between 4-8, random radius 5-15
+  //   star
+  //     .beginFill(0xadadad)
+  //     .drawStar(
+  //       Math.random() * app.screen.width,
+  //       Math.random() * app.screen.height,
+  //       Math.random() * 4 + 4,
+  //       Math.random() * 5 + 1
+  //     )
+  //     .endFill();
 
-    //add star to DOM
-    app.stage.addChild(star);
-  }
+  //   //add star to DOM
+  //   app.stage.addChild(star);
+  // }
 
   app.stage.addChild(player);
   app.stage.addChild(opponent);
@@ -163,6 +189,21 @@ function gameLoop(delta, direction) {
   updateBullets(delta, direction);
   updatePosition();
   bulletsReceived = [];
+  backgroundSprite.tilePosition.x -= 3;
+
+  moonSprite.x -= 1;
+  moonSprite.rotation += 0.01
+  if(moonSprite.x < -400) {
+    moonSprite.x = app.view.width + 60;
+    moonSprite.y = Math.random() * app.view.height + 1
+  }
+
+  moon2Sprite.x -= 2;
+  moon2Sprite.rotation -= 0.02
+  if(moon2Sprite.x < -400) {
+    moon2Sprite.x = app.view.width + 40;
+    moon2Sprite.y = Math.random() * app.view.height + 1
+  }
 
   if (ws != 0) {
     const messageBody = {
