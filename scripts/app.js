@@ -32,14 +32,19 @@ asteroid4.y = 600;
 asteroid4.anchor.set(0.5);
 asteroid4.scale.set(0.3);
 
-const asteroidGame = new PIXI.Sprite.from("../graphics/gameAsteroid.png");
-asteroidGame.x = 300;
-asteroidGame.y = 600;
-asteroidGame.anchor.set(0.5);
-asteroidGame.scale.set(1.5);
+const asteroidGame1 = new PIXI.Sprite.from("../graphics/gameAsteroid.png");
+asteroidGame1.anchor.set(0.5);
+asteroidGame1.scale.set(1.5);
 
-let hitAsteroid = false;
-function asteroidCollisionDetection(asteroid) {
+const asteroidGame2= new PIXI.Sprite.from("../graphics/gameAsteroid.png");
+asteroidGame2.anchor.set(0.5);
+asteroidGame2.scale.set(1.5);
+
+
+let hitAsteroid1 = false;
+let hitAsteroid2 = false;
+let hitAsteroidArray = [false,false];
+function asteroidCollisionDetection(asteroid,num) {
   const asteroidX = asteroid.x;
   const asteroidY = asteroid.y;
   const asteroidRadius = 50;
@@ -51,14 +56,14 @@ function asteroidCollisionDetection(asteroid) {
   const distance = Math.sqrt(dx * dx + dy * dy);
 
   if (distance < asteroidRadius + playerRadius) {
-    if (!hitAsteroid) {
+    if (!hitAsteroidArray[num]) {
       player.dx = -player.dx / 4;
       player.dy = -player.dy / 4;
-      hitAsteroid = true;
+      hitAsteroidArray[num] = true;
     }
   }
   else{
-    hitAsteroid = false;
+    hitAsteroidArray[num] = false;
   }
 }
 
@@ -137,6 +142,7 @@ function createGame() {
   player.rotation = startAngle;
   opponent.rotation = enemyStartAngle;
 
+
   //create player health bar
   const playerHealthContainer = document.createElement("div");
   playerHealthContainer.setAttribute("id", "playerHealthContainer");
@@ -170,12 +176,44 @@ function createGame() {
   //append app to in the DOM
   document.getElementById("gameDiv").appendChild(app.view);
 
+  //add asteroids to the game
+
+  asteroidPos = 3;
+  if(asteroidPos === 0){
+    asteroidGame1.x = 400;
+    asteroidGame1.y = 300;
+    asteroidGame2.x = 900;
+    asteroidGame2.y = 500;
+  }
+  else if(asteroidPos === 1){
+    asteroidGame1.x = 200;
+    asteroidGame1.y = 550;
+    asteroidGame2.x = 900;
+    asteroidGame2.y = 200;
+  }
+  else if(asteroidPos === 2){
+    asteroidGame1.x = 200;
+    asteroidGame1.y = 250;
+    asteroidGame2.x = 1100;
+    asteroidGame2.y = 500;
+  }
+  else if(asteroidPos === 3){
+    asteroidGame1.x = 500;
+    asteroidGame1.y = 450;
+    asteroidGame2.x = 900;
+    asteroidGame2.y = 350;
+  }
+  
+
   app.stage.addChild(backgroundSprite);
   app.stage.addChild(asteroid1);
   app.stage.addChild(asteroid2);
   app.stage.addChild(asteroid3);
   app.stage.addChild(asteroid4);
-  app.stage.addChild(asteroidGame);
+  app.stage.addChild(asteroidGame1);
+  app.stage.addChild(asteroidGame2);
+
+
 
   //add them to DOM
   document.getElementById("gameDiv").appendChild(playerHealthContainer);
@@ -235,7 +273,8 @@ function createGame() {
 function gameLoop(delta, direction) {
   updateBullets(delta, direction);
   updatePosition();
-  asteroidCollisionDetection(asteroidGame);
+  asteroidCollisionDetection(asteroidGame1,0);
+  asteroidCollisionDetection(asteroidGame2,1);
   bulletsReceived = [];
   backgroundSprite.tilePosition.x -= 3;
 
@@ -267,7 +306,8 @@ function gameLoop(delta, direction) {
     asteroid4.y = Math.random() * app.view.height + 1;
   }
 
-  asteroidGame.rotation += 0.02;
+  asteroidGame1.rotation += 0.02;
+  asteroidGame2.rotation -= 0.02;
 
   if (!gameEnded) {
     const messageBody = {

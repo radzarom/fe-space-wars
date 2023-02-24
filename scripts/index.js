@@ -19,6 +19,8 @@ let otherHealth = 100;
 let otherBullets = [];
 const speed = 10;
 
+let asteroidPos;
+
 let gameStarted = false;
 let gameEnded = false;
 
@@ -119,7 +121,7 @@ async function startGame() {
       enemyStartPos = messageBody.enemyStartPos;
       startAngle = messageBody.angle;
       enemyStartAngle = messageBody.enemyAngle;
-
+      asteroidPos = messageBody.asteroidPos;
       playGame();
     }
   };

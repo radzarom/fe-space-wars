@@ -86,7 +86,8 @@ function updateBullets(delta, direction) {
     bullets[i].position.x += bullets[i].direction.x * bulletSpeed;
     if (
       collisionDetection(opponent, bullets[i]) ||
-      asteroidDetection(asteroidGame, bullets[i])
+      asteroidDetection(asteroidGame1, bullets[i]) ||
+      asteroidDetection(asteroidGame2, bullets[i])
     ) {
       bullets[i].dead = true;
     }
@@ -112,7 +113,10 @@ function updateBullets(delta, direction) {
     opponentBullets[i].position.x +=
       opponentBullets[i].direction.x * bulletSpeed;
     //conditions for determining if bullet is offscreen go here, set to dead
-    if (asteroidDetection(asteroidGame, opponentBullets[i])) {
+    if (
+      asteroidDetection(asteroidGame1, opponentBullets[i]) ||
+      asteroidDetection(asteroidGame2, opponentBullets[i])
+    ) {
       opponentBullets[i].dead = true;
     }
 
