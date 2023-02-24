@@ -165,8 +165,8 @@ function createGame() {
   opponentName.setAttribute("id", "opponentName");
   opponentName.innerText = otherPlayer;
 
-  currentPlayerHealth.style.backgroundColor = "green";
-  currentOpponentHealth.style.backgroundColor = "green";
+  currentPlayerHealth.style.backgroundColor = "rgba(0,255,0,0.5)";
+  currentOpponentHealth.style.backgroundColor = "rgba(0,255,0,0.5)";
 
   //box for pixi app
   // const gameDiv = document.createElement("div");
@@ -306,7 +306,7 @@ function gameLoop(delta, direction) {
   }
 
   asteroidGame1.rotation += 0.02;
-  asteroidGame2.rotation -= 0.02;
+  asteroidGame2.rotation -= 0.013;
 
   if (!gameEnded) {
     const messageBody = {

@@ -133,7 +133,7 @@ function updateBullets(delta, direction) {
 
       if (playerHealth <= 30) {
         document.getElementById("currentplayerhealth").style.backgroundColor =
-          "red";
+          "rgba(255,0,0,0.5)";
       }
     }
     if (

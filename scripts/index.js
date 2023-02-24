@@ -204,7 +204,7 @@ async function playGame() {
 
       if (opponentHealth <= 30) {
         document.getElementById("currentopponenthealth").style.backgroundColor =
-          "red";
+          "rgba(255,0,0,0.5)";
       }
 
       for (let bullet of bulletsReceived) {

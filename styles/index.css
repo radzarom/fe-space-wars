@@ -129,13 +129,13 @@ canvas{
   #currentplayerhealth {
     height: 100%;
     width: 100%;
-    background-color: green;
+    background-color: rgba(0,255,0,0.5);
   }
 
   #currentopponenthealth {
     height: 100%;
     width: 100%;
-    background-color: green;
+    background-color: rgba(0,255,0,0.5);
   }
 
   #playerName {
