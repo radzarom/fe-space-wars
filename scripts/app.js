@@ -123,7 +123,7 @@ function createGame() {
   document.getElementById("playerhealthbar").appendChild(playerName);
 
 
-  app.stage.addChild(particleContainer);
+  //app.stage.addChild(particleContainer);
   //add player sprites to stage
   app.stage.addChild(player);
   app.stage.addChild(opponent);
