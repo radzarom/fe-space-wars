@@ -26,8 +26,6 @@ function countdown() {
   }, 1000);
 }
 
-const particleContainer = PIXI.ParticleContainer();
-
 
 //Set up DOM for game, player start positions, adds background, keyboard mouse interactivity in a gameloop
 function createGame() {
@@ -105,6 +103,7 @@ function createGame() {
   app.stage.addChild(asteroid4);
   app.stage.addChild(asteroidGame1);
   app.stage.addChild(asteroidGame2);
+  app.stage.addChild(container);
 
 
 
@@ -146,6 +145,9 @@ function createGame() {
 
   //play soundtrack
   soundtrack.play();
+  emitter.emit = true;
+  emitter2.emit = true;
+  console.log(emitter);
 }
 
 //anything inside of here gets ran on each tick, updates bullets, position, collision detection etc.
@@ -240,6 +242,7 @@ function makeWinLossScreen(message) {
 function endGameOnWin() {
   animateExplosion(opponent);
   makeWinLossScreen(`<span>GAME OVER</span><br/>Player ${username}, you won!`);
+  emitter2.emit = false;
 }
 
 //end on loss, blow up player ship
@@ -248,4 +251,5 @@ function endGameOnLoss() {
   makeWinLossScreen(
     `<span>GAME OVER</span><br/>Player ${username}, you lost...`
   );
+  emitter.emit = false;
 }

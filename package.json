@@ -21,6 +21,7 @@
     "@pixi/graphics-extras": "^7.2.0-beta",
     "@pixi/loaders": "^6.5.9",
     "howler": "^2.2.3",
+    "particle-emitter": "^0.5.0",
     "pixi.js": "^7.2.0-beta"
   }
 }
