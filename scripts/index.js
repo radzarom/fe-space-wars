@@ -1,26 +1,5 @@
-let teamName = "";
-let username = "";
-let otherPlayer = "";
-let startPos = [];
-let enemyStartPos = [];
-let startAngle;
-let enemyStartAngle;
 
-let currentPosX;
-let currentPosY;
-let currentAngle;
-let health = 100;
-let currentBullets = [];
-
-let otherPosX;
-let otherPosY;
-let otherAngle;
-let otherHealth = 100;
-let otherBullets = [];
-const speed = 10;
-
-let asteroidPos;
-
+//tracks game start and end to stop communications at right time
 let gameStarted = false;
 let gameEnded = false;
 
@@ -28,14 +7,21 @@ const site = "ws://spacewarserver.eu-4.evennode.com";
 
 let ws = 0;
 
+//ran on game replay button click
 function restart() {
 
-  ws = 0
+  //stop pixi app
   app.stop()
+  //make new one
   app = new PIXI.Application({ width: 1400, height: 800 });
+
+  //reset loader for tileset
   loader.destroy()
+  
+  //stop soundtrack
   soundtrack.stop();
 
+  //reset player variables
   teamName = ""
   otherPlayer = "";
   playerHealth = 100
@@ -45,6 +31,7 @@ function restart() {
   gameStarted = false;
   gameEnded = false;
   
+  //get container div and insert startpage again
   const gameDiv = document.getElementById("gameDiv");
 
   gameDiv.innerHTML = `
@@ -72,36 +59,45 @@ function restart() {
       </div>
   </div>`
 
+  //set loading wheel to not visible
   loadingContainer.style.display = "none";
 
+  //autofill playername
   if(username !== "") {
     document.getElementById("playername-input").value = username;
   }
 }
+
 restart()
 
+//connects with server and finds match
 async function startGame() {
+  //take playername from input field
   let usernameInput = document.getElementById("playername-input");
-
   username = usernameInput.value;
 
+  //if empty show message asking for name
   if (username === "") {
     document.getElementById("information").innerText = "Please enter a name";
     return;
   }
 
+  //set websocket to tell server of unmatched player
   ws = new WebSocket(site + "/unmatched?username=" + username);
 
+  //send players name
   ws.onopen = function (e) {
     const messageBody = { username };
     ws.send(JSON.stringify(messageBody));
   };
 
+  //removes start screen
   function removeStarting() {
     document.getElementById("outerDiv").remove();
     document.getElementById("instructions").remove();
   }
 
+  //deal with server message info on pairing status
   ws.onmessage = (webSocketMessage) => {
     const messageBody = JSON.parse(webSocketMessage.data);
 
@@ -114,7 +110,10 @@ async function startGame() {
       document.getElementById("buttonContainer").remove();
 
       return;
-    } else if (messageBody.message === "paired") {
+    } 
+    else if (messageBody.message === "paired") {
+
+      //remove start screen and set initial player coors etc
       removeStarting();
       teamName = messageBody.teamName;
       otherPlayer = messageBody.otherPlayer;
@@ -128,6 +127,7 @@ async function startGame() {
   };
 }
 
+//when player loses sends message to server with both usernames
 function declareEndGame() {
   const messageBody = {
     lost: true,
@@ -141,27 +141,25 @@ function declareEndGame() {
   }
 }
 
+//deal with communications with server during game
 async function playGame() {
   ws = new WebSocket(site + "/matched?team=" + teamName);
 
+  //on window exit declare your loss
   window.onbeforeunload = function () {
     declareEndGame();
   };
 
+  //on player pairing run the game countdown
   ws.onopen = function (e) {
-    //Selects div to append app to in the DOM
-    //createGame();
+   
     countdown();
-
-    // player.x = startPos[0];
-    // player.y = startPos[1];
-    // opponent.x = enemyStartPos[0];
-    // opponent.y = enemyStartPos[1];
-    // player.rotation = startAngle;
-    // opponent.rotation = enemyStartAngle;
   };
 
+  //deals with message from server
   ws.onmessage = (webSocketMessage) => {
+
+    //stop running if game not yet started, or it has ended
     if (!gameStarted) {
       return;
     }
@@ -172,16 +170,23 @@ async function playGame() {
 
     const messageBody = JSON.parse(webSocketMessage.data);
 
+    //if server send lost message
     if (messageBody.lost) {
+
+      //decide who to display a loss or a win
       if (username !== messageBody.username) {
+
         gameEnded = true;
         opponentHealth = 0;
+        //update health bar
         document.getElementById(
           "currentopponenthealth"
         ).style.width = `${opponentHealth}%`;
         endGameOnWin();
         return;
-      } else {
+      } 
+      else {
+
         gameEnded = true;
         playerHealth = 0;
         document.getElementById(
@@ -192,22 +197,27 @@ async function playGame() {
       }
     }
 
+    //update opponent info
     if (messageBody.username !== username) {
+
+      //set opponent coords, and health, receive new bullets
       opponent.x = messageBody.x;
       opponent.y = messageBody.y;
       opponent.rotation = messageBody.angle + Math.PI / 2;
       bulletsReceived = messageBody.bullets;
       opponentHealth = messageBody.playerHealth;
 
+      //set size of health bar
       document.getElementById(
         "currentopponenthealth"
       ).style.width = `${opponentHealth}%`;
-
+      //set health bar to red on low health
       if (opponentHealth <= 30) {
         document.getElementById("currentopponenthealth").style.backgroundColor =
           "rgba(255,0,0,0.5)";
       }
 
+      //create new opponent bullets
       for (let bullet of bulletsReceived) {
         opponentBullets.push(
           createBullet(
@@ -217,6 +227,7 @@ async function playGame() {
             opponent.rotation + Math.PI / 2
           )
         );
+        //play laser sound for each bullet
         laserSound.play();
       }
     }
