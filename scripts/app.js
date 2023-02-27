@@ -1,110 +1,5 @@
-let app = new PIXI.Application({ width: 1400, height: 800 });
-const loader = PIXI.Loader.shared;
-loader.add("tileset", "../explosion/explosions2.json").load(setupExplosion);
 
-const backgroundTexture = PIXI.Texture.from("../graphics/spaceBackground.png");
-const backgroundSprite = new PIXI.TilingSprite(
-  backgroundTexture,
-  app.screen.width,
-  app.screen.height
-);
-backgroundSprite.tileScale.set(1, 1.2);
-
-const asteroid1 = new PIXI.Sprite.from("../graphics/asteroid1.png");
-asteroid1.x = 300;
-asteroid1.y = 500;
-asteroid1.anchor.set(0.5);
-
-const asteroid2 = new PIXI.Sprite.from("../graphics/asteroid2.png");
-asteroid2.x = 1200;
-asteroid2.y = 200;
-asteroid2.anchor.set(0.5);
-asteroid2.scale.set(0.4);
-
-const asteroid3 = new PIXI.Sprite.from("../graphics/asteroid2.png");
-asteroid3.x = 800;
-asteroid3.y = 350;
-asteroid3.anchor.set(0.5);
-
-const asteroid4 = new PIXI.Sprite.from("../graphics/asteroid2.png");
-asteroid4.x = 100;
-asteroid4.y = 600;
-asteroid4.anchor.set(0.5);
-asteroid4.scale.set(0.3);
-
-const asteroidGame1 = new PIXI.Sprite.from("../graphics/gameAsteroid.png");
-asteroidGame1.anchor.set(0.5);
-asteroidGame1.scale.set(1.5);
-
-const asteroidGame2= new PIXI.Sprite.from("../graphics/gameAsteroid.png");
-asteroidGame2.anchor.set(0.5);
-asteroidGame2.scale.set(1.5);
-
-
-let hitAsteroid1 = false;
-let hitAsteroid2 = false;
-let hitAsteroidArray = [false,false];
-function asteroidCollisionDetection(asteroid,num) {
-  const asteroidX = asteroid.x;
-  const asteroidY = asteroid.y;
-  const asteroidRadius = 50;
-  const playerX = player.x;
-  const playerY = player.y;
-  const playerRadius = 23;
-  const dx = asteroidX - playerX;
-  const dy = asteroidY - playerY;
-  const distance = Math.sqrt(dx * dx + dy * dy);
-
-  if (distance < asteroidRadius + playerRadius) {
-    if (!hitAsteroidArray[num]) {
-      player.dx = -player.dx / 4;
-      player.dy = -player.dy / 4;
-      hitAsteroidArray[num] = true;
-    }
-  }
-  else{
-    hitAsteroidArray[num] = false;
-  }
-}
-
-let soundtrack = new Howl({
-  src: ["../sound/soundtrack.mp3"],
-  html5: true,
-});
-
-//client player
-//create player sprite
-let player = PIXI.Sprite.from("../graphics/ship.png");
-//track health
-let playerHealth = 100;
-//scale dimensions
-player.width = 50;
-player.height = 50;
-//x, y velocity
-player.dx = 0;
-player.dy = 0;
-//makes the position of sprite the center instead of upper left
-player.anchor.set(0.5);
-//for tracking ship angle and mouse cursor coords, used for vectors
-let angle = 0;
-let mousePosition;
-//keep track of all bullets on screeen
-let bullets = [];
-let bulletsToSend = [];
-let bulletSpeed = 7;
-//keeps track of key presses
-let keys = {};
-
-//opponent
-let opponent = PIXI.Sprite.from("../graphics/ship.png");
-opponentHealth = 100;
-opponent.width = 50;
-opponent.height = 50;
-opponent.anchor.set(0.5);
-opponent.rotation = 0;
-let opponentBullets = [];
-let bulletsReceived = [];
-
+//adds game countdown before start
 function countdown() {
   let count = 5;
   const gameDiv = document.getElementById("gameDiv");
@@ -131,7 +26,7 @@ function countdown() {
   }, 1000);
 }
 
-//Set up DOM for game, adds background, keyboard mouse interactivity in a gameloop
+//Set up DOM for game, player start positions, adds background, keyboard mouse interactivity in a gameloop
 function createGame() {
   //set up game variables
   gameStarted = true;
@@ -165,19 +60,15 @@ function createGame() {
   opponentName.setAttribute("id", "opponentName");
   opponentName.innerText = otherPlayer;
 
+  //resets health bar color for replay
   currentPlayerHealth.style.backgroundColor = "rgba(0,255,0,0.5)";
   currentOpponentHealth.style.backgroundColor = "rgba(0,255,0,0.5)";
 
-  //box for pixi app
-  // const gameDiv = document.createElement("div");
-  // gameDiv.setAttribute("id", "gameDiv");
-  // document.getElementById("body").appendChild(gameDiv);
 
   //append app to in the DOM
   document.getElementById("gameDiv").appendChild(app.view);
 
-  //add asteroids to the game
-
+  //add asteroids to the game in correct position depending on server
   if(asteroidPos === 0){
     asteroidGame1.x = 400;
     asteroidGame1.y = 300;
@@ -203,7 +94,7 @@ function createGame() {
     asteroidGame2.y = 350;
   }
   
-
+  //add asteroids and background to stage
   app.stage.addChild(backgroundSprite);
   app.stage.addChild(asteroid1);
   app.stage.addChild(asteroid2);
@@ -214,7 +105,7 @@ function createGame() {
 
 
 
-  //add them to DOM
+  //add healthbars to DOM
   document.getElementById("gameDiv").appendChild(playerHealthContainer);
   document.getElementById("gameDiv").appendChild(opponentHealthContainer);
   document.getElementById("playerHealthContainer").appendChild(playerHealthBar);
@@ -228,24 +119,7 @@ function createGame() {
     .appendChild(currentOpponentHealth);
   document.getElementById("playerhealthbar").appendChild(playerName);
 
-  // //renders 60 star shapes in background
-  // for (let i = 0; i < 150; i++) {
-  //   const star = new PIXI.Graphics();
-  //   //draws a star at random width and height, with random number of points between 4-8, random radius 5-15
-  //   star
-  //     .beginFill(0xadadad)
-  //     .drawStar(
-  //       Math.random() * app.screen.width,
-  //       Math.random() * app.screen.height,
-  //       Math.random() * 4 + 4,
-  //       Math.random() * 5 + 1
-  //     )
-  //     .endFill();
-
-  //   //add star to DOM
-  //   app.stage.addChild(star);
-  // }
-
+  //add player sprites to stage
   app.stage.addChild(player);
   app.stage.addChild(opponent);
 
@@ -265,20 +139,26 @@ function createGame() {
   window.addEventListener("keydown", keysDown);
   window.addEventListener("keyup", keysUp);
 
+  //play soundtrack
   soundtrack.play();
 }
 
-//anything inside of here gets ran on each tick, i think...
+//anything inside of here gets ran on each tick, updates bullets, position, collision detection etc.
 function gameLoop(delta, direction) {
+
   updateBullets(delta, direction);
   updatePosition();
   asteroidCollisionDetection(asteroidGame1,0);
   asteroidCollisionDetection(asteroidGame2,1);
-  bulletsReceived = [];
+
+  //scroll background
   backgroundSprite.tilePosition.x -= 3;
 
+
+  //scroll and rotate asteroid
   asteroid1.x -= 1;
   asteroid1.rotation += 0.01;
+  //when asteroid leaves screen set x coords to other side at random height
   if (asteroid1.x < -400) {
     asteroid1.x = app.view.width + 60;
     asteroid1.y = Math.random() * app.view.height + 1;
@@ -308,6 +188,12 @@ function gameLoop(delta, direction) {
   asteroidGame1.rotation += 0.02;
   asteroidGame2.rotation -= 0.013;
 
+  //new bullets to create from opponent
+  bulletsReceived = [];
+
+  
+
+  //if the game has not ended keep sending updates to server
   if (!gameEnded) {
     const messageBody = {
       x: player.x,
@@ -317,39 +203,14 @@ function gameLoop(delta, direction) {
       bullets: bulletsToSend,
       playerHealth,
     };
-
+    //new bullets to send to opponent
     bulletsToSend = [];
 
     ws.send(JSON.stringify(messageBody));
   }
 }
 
-function setupExplosion(loader, resources) {
-  textures = [];
-  for (let i = 0; i < 64; i++) {
-    const texture = PIXI.Texture.from(`explosion2-${i}.png`);
-    textures.push(texture);
-  }
-}
-
-function animateExplosion(thisPlayer) {
-  const x = thisPlayer.x;
-  const y = thisPlayer.y;
-  app.stage.removeChild(thisPlayer);
-
-  const explosion = new PIXI.AnimatedSprite(textures);
-  explosion.anchor.set(0.5);
-  explosion.position.set(x, y);
-  explosion.scale.set(1, 1);
-  app.stage.addChild(explosion);
-  explosion.play();
-  explosion.loop = false;
-  explosion.animationSpeed = 0.5;
-  explosion.onComplete = () => {
-    app.stage.removeChild(explosion);
-  };
-}
-
+//creates DOM for win/loss screen and adds replay button
 function makeWinLossScreen(message) {
   const gameDiv = document.getElementById("gameDiv");
   const winlossContainer = document.createElement("div");
@@ -370,11 +231,13 @@ function makeWinLossScreen(message) {
   winlossContainer.appendChild(replay);
 }
 
+//end game on win, blow up opponent ship
 function endGameOnWin() {
   animateExplosion(opponent);
   makeWinLossScreen(`<span>GAME OVER</span><br/>Player ${username}, you won!`);
 }
 
+//end on loss, blow up player ship
 function endGameOnLoss() {
   animateExplosion(player);
   makeWinLossScreen(

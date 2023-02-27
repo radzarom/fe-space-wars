@@ -1,5 +1,5 @@
 
-
+//sets ship angle based off of mouse position
 function movePlayer(e) {
     //updates global variable for this
     mousePosition = e.data.global;
@@ -13,6 +13,7 @@ function movePlayer(e) {
     player.rotation = angle + Math.PI/2
 }
 
+//on key presses
 function keysDown(e) {
 
     keys[e.keyCode] = true;
@@ -23,8 +24,10 @@ function keysUp(e) {
     keys[e.keyCode] = false;
 }
 
+//updates ship position based off of current velocity adn key presses
 function updatePosition() {
 
+    //stops player going off screen
     if(player.y >= 25 && player.y <= app.view.height -25) {
 
         player.y += player.dy
@@ -55,12 +58,13 @@ function updatePosition() {
             player.x += player.dx
         }
 
-
+    //if player in bounds of app then update  x coord
     if(player.x >= 0 && player.x <= app.view.width) {
 
         player.x += player.dx
     }
 
+    //adjust velocity if keys pressed
     // W
     if(keys["87"]) {
         
@@ -81,6 +85,7 @@ function updatePosition() {
         
         player.dx += 0.1
     }
+    //reduce velocity if spacebar pressed
     if(keys["32"]) {
         if(player.dy > 0) {
 
