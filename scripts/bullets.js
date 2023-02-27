@@ -16,7 +16,7 @@ function fireBullet(e) {
   direction.y /= length;
 
   //create bullet, passing vector
-  let bullet = createBullet(player.x, player.y, direction, angle);
+  let bullet = createBullet(player.x, player.y, direction, angle, "player");
   //add it to the array of existing bullets so it can be updated
   bullets.push(bullet);
 
@@ -26,9 +26,10 @@ function fireBullet(e) {
   laserSound.play();
 }
 
-function createBullet(x, y, direction, angle) {
+function createBullet(x, y, direction, angle, player) {
   //makes new bullet sprite
-  let bullet = PIXI.Sprite.from("../graphics/bullet.png");
+  let bullet = PIXI.Sprite.from(`../graphics/${player}Bullet.png`);
+  
 
   bullet.height = 30;
   bullet.width = 5;

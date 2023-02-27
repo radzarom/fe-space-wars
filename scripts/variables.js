@@ -56,7 +56,7 @@ asteroidGame2.scale.set(1.5);
 
 //client player
 //create player sprite
-let player = PIXI.Sprite.from("../graphics/ship.png");
+let player = PIXI.Sprite.from("../graphics/playerShip.png");
 //track health
 let playerHealth = 100;
 //scale dimensions
@@ -79,7 +79,7 @@ let keys = {};
 
 
 //opponent
-let opponent = PIXI.Sprite.from("../graphics/ship.png");
+let opponent = PIXI.Sprite.from("../graphics/opponentShip.png");
 opponentHealth = 100;
 opponent.width = 50;
 opponent.height = 50;

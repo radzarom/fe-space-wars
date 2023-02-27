@@ -219,14 +219,10 @@ async function playGame() {
 
       //create new opponent bullets
       for (let bullet of bulletsReceived) {
-        opponentBullets.push(
-          createBullet(
-            bullet[0],
-            bullet[1],
-            bullet[2],
-            opponent.rotation + Math.PI / 2
-          )
-        );
+
+        const opponentBullet = createBullet(bullet[0], bullet[1], bullet[2], opponent.rotation + Math.PI / 2, "opponent")
+        
+        opponentBullets.push(opponentBullet);
         //play laser sound for each bullet
         laserSound.play();
       }

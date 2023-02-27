@@ -26,6 +26,9 @@ function countdown() {
   }, 1000);
 }
 
+const particleContainer = PIXI.ParticleContainer();
+
+
 //Set up DOM for game, player start positions, adds background, keyboard mouse interactivity in a gameloop
 function createGame() {
   //set up game variables
@@ -119,6 +122,8 @@ function createGame() {
     .appendChild(currentOpponentHealth);
   document.getElementById("playerhealthbar").appendChild(playerName);
 
+
+  app.stage.addChild(particleContainer);
   //add player sprites to stage
   app.stage.addChild(player);
   app.stage.addChild(opponent);
