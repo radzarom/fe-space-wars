@@ -29,7 +29,7 @@ function fireBullet(e) {
   direction.y /= length;
 
   //create bullet, passing vector
-  let bullet = createBullet(player.x, player.y, direction, angle, bulletType, width, height);
+  let bullet = createBullet(player.x, player.y, direction, angle, bulletType, width = 5, height = 30);
   //add it to the array of existing bullets so it can be updated
   bullets.push(bullet);
 

@@ -234,6 +234,7 @@ async function playGame() {
       //create new opponent bullets
       for (let bullet of bulletsReceived) {
 
+
         let bulletType = "opponent"
 
         if(opponentPoweredUp) {
@@ -241,6 +242,7 @@ async function playGame() {
           opponentPoweredUp = false;
         }
         
+
         const opponentBullet = createBullet(bullet[0], bullet[1], bullet[2], opponent.rotation + Math.PI / 2, bulletType)
 
         opponentBullets.push(opponentBullet);

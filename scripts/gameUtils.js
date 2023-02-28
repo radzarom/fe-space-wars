@@ -39,7 +39,7 @@ function powerUpCollision() {
 
   if (distance < powerUpRadius + playerRadius) {
 
-
+    
     playerHealth += 10;
     if(playerHealth > 100){
       playerHealth = 100;
