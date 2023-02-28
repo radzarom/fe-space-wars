@@ -243,7 +243,6 @@ async function playGame() {
 
         if(opponentPoweredUp) {
           bulletType = "extraPower";
-          opponentPoweredUp = false;
           height = 100;
           width = 100;
         }    

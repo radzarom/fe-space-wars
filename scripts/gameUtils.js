@@ -45,8 +45,8 @@ function powerUpCollision() {
 
     poweredUp = true;
     powerUpVisible = false
-    powerUp.x = Math.random() * app.view.width + 50
-    powerUp.y = Math.random() * app.view.height + 50
+    powerUp.x = Math.random() * (app.view.width - 100 +1) + 50
+    powerUp.y = Math.random() * (app.view.height - 100 +1) + 50
 
     
 
