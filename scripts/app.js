@@ -182,7 +182,7 @@ function gameLoop(delta, direction) {
   
 
   //scroll background
-  backgroundSprite.tilePosition.x -= 3;
+  backgroundSprite.tilePosition.x -= 7;
 
 
   //scroll and rotate asteroid
