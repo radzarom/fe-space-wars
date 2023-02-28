@@ -29,7 +29,7 @@ function fireBullet(e) {
   direction.y /= length;
 
   //create bullet, passing vector
-  let bullet = createBullet(player.x, player.y, direction, angle, bulletType, width, height);
+  let bullet = createBullet(player.x, player.y, direction, angle, bulletType);
   //add it to the array of existing bullets so it can be updated
   bullets.push(bullet);
 
@@ -40,17 +40,23 @@ function fireBullet(e) {
   laserSound.play();
 }
 
-function createBullet(x, y, direction, angle, player, width, height) {
+function createBullet(x, y, direction, angle, type) {
   //makes new bullet sprite
-  let bullet = PIXI.Sprite.from(`../graphics/${player}Bullet.png`);
+  let bullet = PIXI.Sprite.from(`../graphics/${type}Bullet.png`);
   
 
-  bullet.height = height;
-  bullet.width = width;
+  bullet.height = 30;
+  bullet.width = 5;
+  bullet.anchor.set(1, 0.5);
+  if(type === "extraPower") {
+    bullet.width = 100;
+    bullet.height = 100;
+    bullet.anchor.set(0.5);
+  }
   //set direction with vector
   bullet.direction = direction;
   //set position of bullet to middle of sprite
-  bullet.anchor.set(1, 0.5);
+  
 
   //offsets start of bullet path to front of ship rather than center
   bullet.x = x + direction.x * 40;

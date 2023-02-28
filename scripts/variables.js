@@ -95,7 +95,7 @@ opponent.anchor.set(0.5);
 opponent.rotation = 0;
 let opponentBullets = [];
 let bulletsReceived = [];
-let opponentPoweredUp = false;
+
 
 //server data
 let teamName = "";

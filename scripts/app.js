@@ -160,7 +160,7 @@ function createGame() {
 
 //anything inside of here gets ran on each tick, updates bullets, position, collision detection etc.
 function gameLoop(delta, direction) {
-console.log(powerUp.x, powerUp.y);
+
   updateBullets(delta, direction);
   updatePosition();
   asteroidCollisionDetection(asteroidGame1,0);
@@ -235,9 +235,9 @@ console.log(powerUp.x, powerUp.y);
       poweredUp
     };
     //new bullets to send to opponent
-    bulletsToSend = [];
     
     ws.send(JSON.stringify(messageBody));
+    bulletsToSend = [];
     
   }
 }

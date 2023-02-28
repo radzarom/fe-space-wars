@@ -207,7 +207,7 @@ async function playGame() {
       opponent.rotation = messageBody.angle + Math.PI / 2;
       bulletsReceived = messageBody.bullets;
       opponentHealth = messageBody.playerHealth;
-      opponentPoweredUp = messageBody.poweredUp
+      const opponentPoweredUp = messageBody.poweredUp
       const powerUpCoords = messageBody.powerUpCoords
       if(messageBody.powerUpCoords !== undefined) {
         if(powerUpCoords[0] != powerUp.x) {
@@ -217,7 +217,7 @@ async function playGame() {
           powerUp.y = powerUpCoords[1]
           setTimeout(() => {
             powerUpVisible = true
-          }, 5000)
+          }, 7000)
         }
       }
 
@@ -231,23 +231,24 @@ async function playGame() {
         document.getElementById("currentopponenthealth").style.backgroundColor =
           "rgba(255,0,0,0.5)";
       }
-
+      console.log(bulletsReceived);
       //create new opponent bullets
       for (let bullet of bulletsReceived) {
 
 
-        let bulletType = "opponent"
+        // let bulletType = "opponent"
 
-        let height = 30;
-        let width = 5;
+        // let height = 30;
+        // let width = 5;
 
-        if(opponentPoweredUp) {
-          bulletType = "extraPower";
-          height = 100;
-          width = 100;
-        }    
+        // console.log(opponentPoweredUp, "2");
+        // if(opponentPoweredUp) {
+        //   bulletType = "extraPower";
+        //   height = 100;
+        //   width = 100;
+        // }    
 
-        const opponentBullet = createBullet(bullet[0], bullet[1], bullet[2], opponent.rotation + Math.PI / 2, bulletType,width,height)
+        const opponentBullet = createBullet(bullet[0], bullet[1], bullet[2], opponent.rotation + Math.PI / 2, bullet[3])
 
         opponentBullets.push(opponentBullet);
         //play laser sound for each bullet

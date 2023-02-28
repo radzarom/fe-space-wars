@@ -53,7 +53,7 @@ function powerUpCollision() {
     setTimeout(() => {
       powerUpVisible = true
       
-    }, 5000)
+    }, 7000)
 
     return [powerUp.x, powerUp.y]
   }
