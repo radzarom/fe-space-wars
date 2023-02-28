@@ -168,14 +168,14 @@ function gameLoop(delta, direction) {
   asteroidCollisionDetection(asteroidGame2,1);
   powerUpCollision()
   if(!powerUpStatus) {
-    //app.stage.removeChild(powerUp)
-    powerUp.interactive = false;
-    powerUp.visible = false;
+    app.stage.removeChild(powerUp)
+    // powerUp.interactive = false;
+    // powerUp.visible = false;
   }
   else{
-    //app.stage.addChild(powerUp)
-    powerUp.interactive = true;
-    powerUp.visible = true;
+    app.stage.addChild(powerUp)
+    // powerUp.interactive = true;
+    // powerUp.visible = true;
   }
 
   

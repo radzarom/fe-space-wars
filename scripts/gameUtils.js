@@ -54,6 +54,7 @@ function powerUpCollision() {
 
     setTimeout(() => {
       powerUpSend = true
+      powerUpStatus = true
       console.log(player, "time out");
     }, 10000)
   }

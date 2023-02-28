@@ -198,25 +198,6 @@ async function playGame() {
     }
 
     //update opponent info
-
-    if(messageBody.username === username){
-      powerUpCoords[0] = messageBody.powerUpCoords[0];
-      powerUpCoords[1] = messageBody.powerUpCoords[1];
-
-      if(messageBody.powerUpSend === true){
-        powerUpStatus = !powerUpStatus
-        opponentPoweredUp = true;
-      }
-
-      if(powerUpCoords[0] != undefined) {
-        powerUp.x = powerUpCoords[0];
-        powerUp.y = powerUpCoords[1];
-        powerUpCoords[0] = undefined;
-        powerUpCoords[1] = undefined;
-      }
-    }
-
-
     if (messageBody.username !== username) {
 
       //set opponent coords, and health, receive new bullets
