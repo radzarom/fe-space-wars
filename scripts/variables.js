@@ -53,6 +53,10 @@ const asteroidGame2= new PIXI.Sprite.from("../graphics/gameAsteroid.png");
 asteroidGame2.anchor.set(0.5);
 asteroidGame2.scale.set(1.5);
 
+//add powerup 
+const powerUp= new PIXI.Sprite.from("../graphics/ballBullet.png");
+powerUp.anchor.set(0.5);
+//powerUp.scale.set(1);
 
 //client player
 //create player sprite
@@ -74,6 +78,8 @@ let mousePosition;
 let bullets = [];
 let bulletsToSend = [];
 let bulletSpeed = 7;
+let poweredUp = false;
+const powerUpStatus = [powerUp.x, powerUp.y, true]
 //keeps track of key presses
 let keys = {};
 
