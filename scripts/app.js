@@ -166,7 +166,8 @@ function gameLoop(delta, direction) {
   updatePosition();
   asteroidCollisionDetection(asteroidGame1,0);
   asteroidCollisionDetection(asteroidGame2,1);
-
+  powerUpCollision()
+  
   if(!powerUpStatus) {
     //app.stage.removeChild(powerUp)
     powerUp.interactive = false;
@@ -178,7 +179,7 @@ function gameLoop(delta, direction) {
     powerUp.visible = true;
   }
 
-  powerUpCollision()
+  
 
   //scroll background
   backgroundSprite.tilePosition.x -= 3;
