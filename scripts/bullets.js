@@ -31,6 +31,7 @@ function fireBullet(e) {
   //create bullet, passing vector
   let bullet = createBullet(player.x, player.y, direction, angle, bulletType);
   //add it to the array of existing bullets so it can be updated
+  bullet.type = bulletType;
   bullets.push(bullet);
 
   
@@ -117,6 +118,9 @@ function updateBullets(delta, direction) {
     bullets[i].position.y += bullets[i].direction.y * bulletSpeed;
     bullets[i].position.x += bullets[i].direction.x * bulletSpeed;
 
+    if(bullets[i].type === "extraPower") {
+      bullets[i].rotation += 1.1
+    }
     //if theres a collision set bullet to be removed
     if (
       collisionDetection(opponent, bullets[i]) ||

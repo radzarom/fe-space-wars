@@ -1,6 +1,9 @@
 
 //adds game countdown before start
 function countdown() {
+  //play soundtrack
+  soundtrack.play();
+
   let count = 5;
   const gameDiv = document.getElementById("gameDiv");
   gameDiv.style.height = "100%";
@@ -152,8 +155,7 @@ function createGame() {
   window.addEventListener("keydown", keysDown);
   window.addEventListener("keyup", keysUp);
 
-  //play soundtrack
-  soundtrack.play();
+  //start engines
   emitter.emit = true;
   emitter2.emit = true;
 }
@@ -216,7 +218,7 @@ function gameLoop(delta, direction) {
   asteroidGame1.rotation += 0.02;
   asteroidGame2.rotation -= 0.013;
 
-  powerUp.rotation += 0.11
+  powerUp.rotation += 1.02
 
   //new bullets to create from opponent
   bulletsReceived = [];

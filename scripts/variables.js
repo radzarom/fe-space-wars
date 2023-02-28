@@ -54,8 +54,10 @@ asteroidGame2.anchor.set(0.5);
 asteroidGame2.scale.set(1.5);
 
 //add powerup 
-const powerUp= new PIXI.Sprite.from("../graphics/powerupBullet.png");
+const powerUp= new PIXI.Sprite.from("../graphics/powerup.png");
 powerUp.anchor.set(0.5);
+powerUp.width = 60;
+powerUp.height = 60;
 //powerUp.scale.set(1);
 
 //client player
@@ -77,7 +79,7 @@ let mousePosition;
 //keep track of all bullets on screeen
 let bullets = [];
 let bulletsToSend = [];
-let bulletSpeed = 7;
+let bulletSpeed = 9;
 
 let poweredUp = false;
 powerUpVisible = true
