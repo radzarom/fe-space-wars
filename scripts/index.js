@@ -212,7 +212,7 @@ async function playGame() {
 
       if(powerUpCoords[0] != undefined) {
         powerUp.x = powerUpCoords[0];
-        powerUp.x = powerUpCoords[0];
+        powerUp.y = powerUpCoords[1];
         powerUpCoords[0] = undefined;
         powerUpCoords[1] = undefined;
       }
