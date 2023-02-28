@@ -238,7 +238,7 @@ function gameLoop(delta, direction) {
     };
     //new bullets to send to opponent
     bulletsToSend = [];
-    powerUpSend = false
+    powerUpSend = false;
 
     ws.send(JSON.stringify(messageBody));
   }
