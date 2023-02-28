@@ -39,16 +39,16 @@ function powerUpCollision() {
   if (distance < powerUpRadius + playerRadius) {
 
     poweredUp = true;
-    powerUpStatus[2] = false;
+    powerUpStatus = false;
     powerUp.visible = false;
     powerUp.x = Math.random() * app.view.width + 50
     powerUp.y = Math.random() * app.view.height + 50
 
     powerUpCoords[0] = powerUp.x
     powerUpCoords[1] = powerUp.y
-    
+
     setTimeout(() => {
-      powerUpStatus[2] = true
+      powerUpStatus = true
     }, 10000)
   }
 }
