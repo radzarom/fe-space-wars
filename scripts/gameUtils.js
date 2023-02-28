@@ -39,7 +39,7 @@ function powerUpCollision() {
 
   if (distance < powerUpRadius + playerRadius) {
 
-
+    
     playerHealth += 10;
     if(playerHealth > 100){
       playerHealth = 100;
@@ -55,7 +55,8 @@ function powerUpCollision() {
     powerUpCoords[1] = powerUp.y
 
     setTimeout(() => {
-      powerUpSend = true;
+      powerUpStatus = true
+      console.log(player, "time out");
     }, 10000)
   }
 }
