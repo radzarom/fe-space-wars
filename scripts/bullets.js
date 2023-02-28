@@ -12,12 +12,12 @@ function fireBullet(e) {
   let width = 5
 
   if(poweredUp) {
-
-    bulletType = "powerup";
+    bulletType = "extraPower";
     poweredUp = false;
-    height = 75
+    height = 100
     width = 100
   }
+
 
   //vector calc
   let direction = {};

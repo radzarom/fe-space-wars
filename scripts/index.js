@@ -241,12 +241,12 @@ async function playGame() {
         let width = 5;
 
         if(opponentPoweredUp) {
-          bulletType = "powerup"
+          bulletType = "extraPower";
           opponentPoweredUp = false;
-          height = 75;
+          height = 100;
           width = 100;
         }    
-        
+
         const opponentBullet = createBullet(bullet[0], bullet[1], bullet[2], opponent.rotation + Math.PI / 2, bulletType,width,height)
 
         opponentBullets.push(opponentBullet);
