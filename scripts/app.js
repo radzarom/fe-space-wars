@@ -156,18 +156,17 @@ function createGame() {
   soundtrack.play();
   emitter.emit = true;
   emitter2.emit = true;
-  console.log(emitter);
 }
 
 //anything inside of here gets ran on each tick, updates bullets, position, collision detection etc.
 function gameLoop(delta, direction) {
-
+console.log(powerUp.x, powerUp.y);
   updateBullets(delta, direction);
   updatePosition();
   asteroidCollisionDetection(asteroidGame1,0);
   asteroidCollisionDetection(asteroidGame2,1);
-  powerUpCollision()
-  if(!powerUpStatus) {
+  const powerUpCoords = powerUpCollision()
+  if(!powerUpVisible) {
     app.stage.removeChild(powerUp)
     // powerUp.interactive = false;
     // powerUp.visible = false;
@@ -232,14 +231,14 @@ function gameLoop(delta, direction) {
       angle,
       bullets: bulletsToSend,
       playerHealth,
-      powerUpStatus,
       powerUpCoords,
-      powerUpSend
+      poweredUp
     };
     //new bullets to send to opponent
-    ws.send(JSON.stringify(messageBody));
     bulletsToSend = [];
-    powerUpSend = false;
+    
+    ws.send(JSON.stringify(messageBody));
+    
   }
 }
 
