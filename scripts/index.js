@@ -206,12 +206,12 @@ async function playGame() {
       opponent.rotation = messageBody.angle + Math.PI / 2;
       bulletsReceived = messageBody.bullets;
       opponentHealth = messageBody.playerHealth;
-      opponentPoweredUp = messageBody.powerUpStatus;
       powerUpCoords[0] = messageBody.powerUpCoords[0];
       powerUpCoords[1] = messageBody.powerUpCoords[1];
 
       if(messageBody.powerUpSend === true){
         powerUpStatus = !powerUpStatus
+        opponentPoweredUp = true;
       }
 
       if(powerUpCoords[0] != undefined) {
@@ -238,10 +238,11 @@ async function playGame() {
 
         if(opponentPoweredUp) {
           bulletType = "powerup"
+          opponentPoweredUp = false;
         }
         
         const opponentBullet = createBullet(bullet[0], bullet[1], bullet[2], opponent.rotation + Math.PI / 2, bulletType)
-        
+
         opponentBullets.push(opponentBullet);
         //play laser sound for each bullet
         laserSound.play();
