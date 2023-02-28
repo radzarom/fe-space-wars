@@ -24,9 +24,7 @@ function asteroidCollisionDetection(asteroid,num) {
   }
 }
 
-function powerUpCollision() {
-
-  
+function powerUpCollision() {  
   const powerUpX = powerUp.x;
   const powerUpY = powerUp.y;
   const powerUpRadius = 35;
@@ -55,7 +53,7 @@ function powerUpCollision() {
     powerUpCoords[1] = powerUp.y
 
     setTimeout(() => {
-      powerUpStatus = true
+      powerUpSend = true
       console.log(player, "time out");
     }, 10000)
   }
