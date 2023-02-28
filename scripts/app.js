@@ -167,7 +167,6 @@ function gameLoop(delta, direction) {
   asteroidCollisionDetection(asteroidGame1,0);
   asteroidCollisionDetection(asteroidGame2,1);
   powerUpCollision()
-  console.log(powerUpStatus);
   if(!powerUpStatus) {
     //app.stage.removeChild(powerUp)
     powerUp.interactive = false;

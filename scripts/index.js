@@ -237,13 +237,17 @@ async function playGame() {
 
         let bulletType = "opponent"
 
+        let height = 30;
+        let width = 5;
+
         if(opponentPoweredUp) {
           bulletType = "powerup"
           opponentPoweredUp = false;
-        }
+          height = 75;
+          width = 100;
+        }    
         
-
-        const opponentBullet = createBullet(bullet[0], bullet[1], bullet[2], opponent.rotation + Math.PI / 2, bulletType)
+        const opponentBullet = createBullet(bullet[0], bullet[1], bullet[2], opponent.rotation + Math.PI / 2, bulletType,width,height)
 
         opponentBullets.push(opponentBullet);
         //play laser sound for each bullet
