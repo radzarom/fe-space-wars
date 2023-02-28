@@ -206,14 +206,13 @@ async function playGame() {
       opponent.rotation = messageBody.angle + Math.PI / 2;
       bulletsReceived = messageBody.bullets;
       opponentHealth = messageBody.playerHealth;
-      
       powerUpCoords[0] = messageBody.powerUpCoords[0];
       powerUpCoords[1] = messageBody.powerUpCoords[1];
 
-      if(powerUpStatus != messageBody.powerUpStatus){
-        powerUpStatus = messageBody.powerUpStatus;
+      if(messageBody.powerUpSend === true){
+        powerUpStatus = !powerUpStatus
       }
-      
+
       if(powerUpCoords[0] != undefined) {
         powerUp.x = powerUpCoords[0];
         powerUp.y = powerUpCoords[1];

@@ -167,7 +167,7 @@ function gameLoop(delta, direction) {
   asteroidCollisionDetection(asteroidGame1,0);
   asteroidCollisionDetection(asteroidGame2,1);
   powerUpCollision()
-  
+  console.log(powerUpStatus);
   if(!powerUpStatus) {
     //app.stage.removeChild(powerUp)
     powerUp.interactive = false;
@@ -234,10 +234,12 @@ function gameLoop(delta, direction) {
       bullets: bulletsToSend,
       playerHealth,
       powerUpStatus,
-      powerUpCoords
+      powerUpCoords,
+      powerUpSend
     };
     //new bullets to send to opponent
     bulletsToSend = [];
+    powerUpSend = false
 
     ws.send(JSON.stringify(messageBody));
   }
