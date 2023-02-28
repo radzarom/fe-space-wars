@@ -79,7 +79,8 @@ let bullets = [];
 let bulletsToSend = [];
 let bulletSpeed = 7;
 let poweredUp = false;
-const powerUpStatus = [powerUp.x, powerUp.y, true]
+let powerUpStatus = true
+const powerUpCoords = [undefined, undefined]
 //keeps track of key presses
 let keys = {};
 

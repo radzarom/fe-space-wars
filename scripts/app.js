@@ -167,7 +167,7 @@ function gameLoop(delta, direction) {
   asteroidCollisionDetection(asteroidGame1,0);
   asteroidCollisionDetection(asteroidGame2,1);
 
-  if(!powerUpStatus[2]) {
+  if(!powerUpStatus) {
     //app.stage.removeChild(powerUp)
     powerUp.interactive = false;
     powerUp.visible = false;
@@ -222,7 +222,6 @@ function gameLoop(delta, direction) {
   //new bullets to create from opponent
   bulletsReceived = [];
 
-  
 
   //if the game has not ended keep sending updates to server
   if (!gameEnded) {
@@ -233,7 +232,8 @@ function gameLoop(delta, direction) {
       angle,
       bullets: bulletsToSend,
       playerHealth,
-      powerUpStatus
+      powerUpStatus,
+      powerUpCoords
     };
     //new bullets to send to opponent
     bulletsToSend = [];

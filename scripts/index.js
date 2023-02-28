@@ -206,9 +206,16 @@ async function playGame() {
       opponent.rotation = messageBody.angle + Math.PI / 2;
       bulletsReceived = messageBody.bullets;
       opponentHealth = messageBody.playerHealth;
-      powerUpStatus[0] = messageBody.powerUpStatus[0];
-      powerUpStatus[1] = messageBody.powerUpStatus[1];
-      powerUpStatus[2] = messageBody.powerUpStatus[2];
+      powerUpStatus = messageBody.powerUpStatus;
+      powerUpCoords[0] = messageBody.powerUpStatus[0];
+      powerUpCoords[1] = messageBody.powerUpStatus[1];
+
+      if(powerUpCoords[0] != undefined) {
+        powerUp.x = powerUpCoords[0];
+        powerUp.x = powerUpCoords[0];
+        powerUpCoords[0] = undefined;
+        powerUpCoords[1] = undefined;
+      }
 
       //set size of health bar
       document.getElementById(
