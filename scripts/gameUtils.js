@@ -46,12 +46,13 @@ function powerUpCollision() {
     poweredUp = true;
     powerUpStatus = false;
     powerUpSend = true;
-    powerUp.x = Math.random() * app.view.width + 50
-    powerUp.y = Math.random() * app.view.height + 50
+    powerUp.x = Math.random() * app.view.width - 50
+    powerUp.y = Math.random() * app.view.height - 50
 
     powerUpCoords[0] = powerUp.x
     powerUpCoords[1] = powerUp.y
 
+    
     setTimeout(() => {
       powerUpSend = true
       powerUpStatus = true
