@@ -26,6 +26,7 @@ function asteroidCollisionDetection(asteroid,num) {
 
 function powerUpCollision() {
 
+  playerHealth += 10;
   const powerUpX = powerUp.x;
   const powerUpY = powerUp.y;
   const powerUpRadius = 35;

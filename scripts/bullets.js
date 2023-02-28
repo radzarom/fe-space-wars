@@ -8,11 +8,15 @@ const laserSound = new Howl({
 function fireBullet(e) {
 
   let bulletType = "player";
+  let height = 30
+  let width = 5
 
   if(poweredUp) {
 
     bulletType = "powerup";
     poweredUp = false;
+    height = 75
+    width = 100
   }
 
   //vector calc
@@ -25,7 +29,7 @@ function fireBullet(e) {
   direction.y /= length;
 
   //create bullet, passing vector
-  let bullet = createBullet(player.x, player.y, direction, angle, bulletType);
+  let bullet = createBullet(player.x, player.y, direction, angle, bulletType, width, height);
   //add it to the array of existing bullets so it can be updated
   bullets.push(bullet);
 
@@ -36,13 +40,13 @@ function fireBullet(e) {
   laserSound.play();
 }
 
-function createBullet(x, y, direction, angle, player) {
+function createBullet(x, y, direction, angle, player, width, height) {
   //makes new bullet sprite
   let bullet = PIXI.Sprite.from(`../graphics/${player}Bullet.png`);
   
 
-  bullet.height = 30;
-  bullet.width = 5;
+  bullet.height = height;
+  bullet.width = width;
   //set direction with vector
   bullet.direction = direction;
   //set position of bullet to middle of sprite
