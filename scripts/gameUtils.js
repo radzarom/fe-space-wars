@@ -24,6 +24,32 @@ function asteroidCollisionDetection(asteroid,num) {
   }
 }
 
+function powerUpCollision() {
+
+  const powerUpX = powerUp.x;
+  const powerUpY = powerUp.y;
+  const powerUpRadius = 35;
+  const playerX = player.x;
+  const playerY = player.y;
+  const playerRadius = 23;
+  const dx = powerUpX - playerX;
+  const dy = powerUpY - playerY;
+  const distance = Math.sqrt(dx * dx + dy * dy);
+
+  if (distance < powerUpRadius + playerRadius) {
+
+    poweredUp = true;
+    powerUpStatus[2] = false;
+    powerUp.visible = false;
+    powerUp.x = Math.random() * app.view.width + 50
+    powerUp.y = Math.random() * app.view.height + 50
+
+    setTimeout(() => {
+      powerUpStatus[2] = true
+    }, 10000)
+  }
+}
+
 //sets up textures for ship explosion
 function setupExplosion(loader, resources) {
     textures = [];

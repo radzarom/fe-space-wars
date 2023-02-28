@@ -75,24 +75,32 @@ function createGame() {
     asteroidGame1.y = 300;
     asteroidGame2.x = 900;
     asteroidGame2.y = 500;
+    powerUp.x = 600;
+    powerUp.y = 750;
   }
   else if(asteroidPos === 1){
     asteroidGame1.x = 200;
     asteroidGame1.y = 550;
     asteroidGame2.x = 900;
     asteroidGame2.y = 200;
+    powerUp.x = 400;
+    powerUp.y = 650;
   }
   else if(asteroidPos === 2){
     asteroidGame1.x = 200;
     asteroidGame1.y = 250;
     asteroidGame2.x = 1100;
     asteroidGame2.y = 500;
+    powerUp.x = 1200;
+    powerUp.y = 700;
   }
   else if(asteroidPos === 3){
     asteroidGame1.x = 500;
     asteroidGame1.y = 450;
     asteroidGame2.x = 900;
     asteroidGame2.y = 350;
+    powerUp.x = 100;
+    powerUp.y = 750;
   }
   
   //add asteroids and background to stage
@@ -103,6 +111,7 @@ function createGame() {
   app.stage.addChild(asteroid4);
   app.stage.addChild(asteroidGame1);
   app.stage.addChild(asteroidGame2);
+  app.stage.addChild(powerUp)
   app.stage.addChild(container);
 
 
@@ -158,6 +167,19 @@ function gameLoop(delta, direction) {
   asteroidCollisionDetection(asteroidGame1,0);
   asteroidCollisionDetection(asteroidGame2,1);
 
+  if(!powerUpStatus[2]) {
+    //app.stage.removeChild(powerUp)
+    powerUp.interactive = false;
+    powerUp.visible = false;
+  }
+  else{
+    //app.stage.addChild(powerUp)
+    powerUp.interactive = true;
+    powerUp.visible = true;
+  }
+
+  powerUpCollision()
+
   //scroll background
   backgroundSprite.tilePosition.x -= 3;
 
@@ -195,6 +217,8 @@ function gameLoop(delta, direction) {
   asteroidGame1.rotation += 0.02;
   asteroidGame2.rotation -= 0.013;
 
+  powerUp.rotation += 0.11
+
   //new bullets to create from opponent
   bulletsReceived = [];
 
@@ -209,6 +233,7 @@ function gameLoop(delta, direction) {
       angle,
       bullets: bulletsToSend,
       playerHealth,
+      powerUpStatus
     };
     //new bullets to send to opponent
     bulletsToSend = [];

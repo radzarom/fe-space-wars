@@ -206,6 +206,9 @@ async function playGame() {
       opponent.rotation = messageBody.angle + Math.PI / 2;
       bulletsReceived = messageBody.bullets;
       opponentHealth = messageBody.playerHealth;
+      powerUpStatus[0] = messageBody.powerUpStatus[0];
+      powerUpStatus[1] = messageBody.powerUpStatus[1];
+      powerUpStatus[2] = messageBody.powerUpStatus[2];
 
       //set size of health bar
       document.getElementById(

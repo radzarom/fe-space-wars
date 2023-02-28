@@ -102,7 +102,7 @@ let emitter = new PIXI.particles.Emitter(
                     "type": "torus",
                     "data": {
                         "x": 0,
-                        "y": 0,
+                        "y": -20,
                         "radius": 10,
                         "innerRadius": 0,
                         "affectRotation": false
@@ -214,7 +214,7 @@ let emitter2 = new PIXI.particles.Emitter(
                     "type": "torus",
                     "data": {
                         "x": 0,
-                        "y": 0,
+                        "y": -20,
                         "radius": 10,
                         "innerRadius": 0,
                         "affectRotation": false
