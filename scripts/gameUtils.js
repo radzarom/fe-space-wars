@@ -48,7 +48,8 @@ function powerUpCollision() {
     powerUpCoords[1] = powerUp.y
 
     setTimeout(() => {
-      //powerUpStatus = true
+      powerUpStatus = true
+      powerUpSend = true;
     }, 10000)
   }
 }
