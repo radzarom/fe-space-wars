@@ -6,6 +6,15 @@ const laserSound = new Howl({
 
 //gets vector for bullet using cursor coords and center position
 function fireBullet(e) {
+
+  let bulletType = "player";
+
+  if(poweredUp) {
+
+    bulletType = "powerup";
+    poweredUp = false;
+  }
+
   //vector calc
   let direction = {};
   direction.x = mousePosition.x - player.x;
@@ -16,12 +25,13 @@ function fireBullet(e) {
   direction.y /= length;
 
   //create bullet, passing vector
-  let bullet = createBullet(player.x, player.y, direction, angle, "player");
+  let bullet = createBullet(player.x, player.y, direction, angle, bulletType);
   //add it to the array of existing bullets so it can be updated
   bullets.push(bullet);
 
+  
   //array of new bullets to send to player
-  bulletsToSend.push([player.x, player.y, direction]);
+  bulletsToSend.push([player.x, player.y, direction, bulletType]);
 
   laserSound.play();
 }

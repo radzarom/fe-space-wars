@@ -54,7 +54,7 @@ asteroidGame2.anchor.set(0.5);
 asteroidGame2.scale.set(1.5);
 
 //add powerup 
-const powerUp= new PIXI.Sprite.from("../graphics/ballBullet.png");
+const powerUp= new PIXI.Sprite.from("../graphics/powerupBullet.png");
 powerUp.anchor.set(0.5);
 //powerUp.scale.set(1);
 
@@ -95,7 +95,7 @@ opponent.anchor.set(0.5);
 opponent.rotation = 0;
 let opponentBullets = [];
 let bulletsReceived = [];
-
+let opponentPoweredUp = false;
 
 //server data
 let teamName = "";
