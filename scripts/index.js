@@ -207,8 +207,8 @@ async function playGame() {
       bulletsReceived = messageBody.bullets;
       opponentHealth = messageBody.playerHealth;
       powerUpStatus = messageBody.powerUpStatus;
-      powerUpCoords[0] = messageBody.powerUpStatus[0];
-      powerUpCoords[1] = messageBody.powerUpStatus[1];
+      powerUpCoords[0] = messageBody.powerUpCoords[0];
+      powerUpCoords[1] = messageBody.powerUpCoords[1];
 
       if(powerUpCoords[0] != undefined) {
         powerUp.x = powerUpCoords[0];
