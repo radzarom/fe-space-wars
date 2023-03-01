@@ -3,7 +3,11 @@ let app = new PIXI.Application({ width: 1400, height: 800 });
 
 //adds tileset for ship explosion
 const loader = PIXI.Loader.shared;
-loader.add("tileset", "../explosion/explosions2.json").load(setupExplosion);
+loader.add("tileset", "../explosion/explosions2.json");//.load(setupExplosion);
+loader.add("tileset2", "../explosion/damageAnimation.json");
+loader.load(setupAnimation);
+
+
 
 //adds background soundtrack
 let soundtrack = new Howl({

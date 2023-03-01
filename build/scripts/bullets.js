@@ -121,13 +121,16 @@ function updateBullets(delta, direction) {
     if(bullets[i].bulletType === "extraPower") {
       bullets[i].rotation += 1.1
     }
+
+    if(collisionDetection(opponent, bullets[i])){
+      bullets[i].dead = true;
+      animateDamage(opponent);
+    }
     //if theres a collision set bullet to be removed
     if (
-      collisionDetection(opponent, bullets[i]) ||
       asteroidDetection(asteroidGame1, bullets[i]) ||
       asteroidDetection(asteroidGame2, bullets[i])
     ) {
-
       bullets[i].dead = true;
     }
 
@@ -165,16 +168,16 @@ function updateBullets(delta, direction) {
       asteroidDetection(asteroidGame2, opponentBullets[i])
     ) {
       opponentBullets[i].dead = true;
+      
     }
 
     //if opponent bullet hits player, drain health
     if (collisionDetection(player, opponentBullets[i])) {
-
+      animateDamage(player);
 
       playerHealth -= 10;
      
       if(opponentBullets[i].bulletType === "extraPower") {
-        
         playerHealth -= 10;
       }
 
