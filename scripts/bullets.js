@@ -31,7 +31,7 @@ function fireBullet(e) {
   //create bullet, passing vector
   let bullet = createBullet(player.x, player.y, direction, angle, bulletType);
   //add it to the array of existing bullets so it can be updated
-  bullet.type = bulletType;
+  
   bullets.push(bullet);
 
   
@@ -44,7 +44,7 @@ function fireBullet(e) {
 function createBullet(x, y, direction, angle, type) {
   //makes new bullet sprite
   let bullet = PIXI.Sprite.from(`../graphics/${type}Bullet.png`);
-  
+  bullet.bulletType = type;
 
   bullet.height = 30;
   bullet.width = 5;
@@ -118,7 +118,8 @@ function updateBullets(delta, direction) {
     bullets[i].position.y += bullets[i].direction.y * bulletSpeed;
     bullets[i].position.x += bullets[i].direction.x * bulletSpeed;
 
-    if(bullets[i].type === "extraPower") {
+    
+    if(bullets[i].bulletType === "extraPower") {
       bullets[i].rotation += 1.1
     }
     //if theres a collision set bullet to be removed
@@ -156,7 +157,7 @@ function updateBullets(delta, direction) {
     opponentBullets[i].position.y += opponentBullets[i].direction.y * bulletSpeed;
     opponentBullets[i].position.x += opponentBullets[i].direction.x * bulletSpeed;
 
-    if(opponentBullets[i].type === "extraPower") {
+    if(opponentBullets[i].bulletType === "extraPower") {
       opponentBullets[i].rotation += 1.1
     }
     //conditions for determining if bullet is offscreen go here, set to dead
@@ -172,9 +173,9 @@ function updateBullets(delta, direction) {
 
 
       playerHealth -= 10;
-      console.log("first -10");
-      if(opponentBullets[i].type === "extraPower") {
-        console.log("second -10");
+     
+      if(opponentBullets[i].bulletType === "extraPower") {
+        
         playerHealth -= 10;
       }
 
