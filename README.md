@@ -2,7 +2,7 @@
 
 ### Hosted Example
 
-........
+[Play](http://spacewarsfront.eu-4.evennode.com/)
 
 ### Back End Repo
 
@@ -17,4 +17,4 @@ On the main page of this repository click 'code' and copy the URL, then at the c
     git clone <URL>
 
 ## Running Locally
-To run the front end locally, download a Live server extension for your editor and open index.html with that
+To run the front end locally, download a Live server extension for your editor and open index.html with that.

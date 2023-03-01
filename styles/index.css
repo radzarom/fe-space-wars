@@ -45,6 +45,12 @@ body {
     background-size:cover;
     overflow: hidden;
 }
+
+#gameDiv {
+  position:relative;
+  
+}
+
 canvas{
  
   width: 100%;
@@ -80,10 +86,6 @@ canvas{
 
   #connection-feedback {
     color: white;
-  }
-
-  #gameDiv {
-    position:relative;
   }
 
   #playerHealthContainer {
