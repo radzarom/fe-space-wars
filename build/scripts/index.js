@@ -210,6 +210,8 @@ async function playGame() {
       opponent.rotation = messageBody.angle + Math.PI / 2;
       bulletsReceived = messageBody.bullets;
       opponentHealth = messageBody.playerHealth;
+      opponent.dx = messageBody.dx;
+      opponent.dy = messageBody.dy;
       const opponentPoweredUp = messageBody.poweredUp
       const powerUpCoords = messageBody.powerUpCoords
       if(messageBody.powerUpCoords !== undefined) {

@@ -240,18 +240,19 @@ var update = function(){
     emitter.ownerPos.y = player.y;
     emitter.rotation =player.rotation - Math.PI;
 	emitter.update((now - elapsed) * 0.001);
+    const speed = (Math.sqrt((player.dx * player.dx) + (player.dy * player.dy)));
+    emitter.maxParticles = speed * 15 + 3;
 
     emitter2.ownerPos.x = opponent.x;
     emitter2.ownerPos.y = opponent.y;
+
     emitter2.rotation =opponent.rotation - Math.PI;
 	emitter2.update((now - elapsed) * 0.001);
+    const otherspeed = (Math.sqrt((opponent.dx * opponent.dx) + (opponent.dy * opponent.dy)));
+    emitter2.maxParticles = otherspeed * 15 + 3;
 
 	elapsed = now;
 };
 
-// Start emitting
-//emitter.emit = true;
 
-
-// Start the update
 update();

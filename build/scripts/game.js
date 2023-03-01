@@ -229,6 +229,8 @@ function gameLoop(delta, direction) {
     const messageBody = {
       x: player.x,
       y: player.y,
+      dx: player.dx,
+      dy: player.dy,
       username,
       angle,
       bullets: bulletsToSend,
