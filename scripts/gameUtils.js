@@ -36,7 +36,7 @@ function powerUpCollision() {
   const distance = Math.sqrt(dx * dx + dy * dy);
 
   if (distance < powerUpRadius + playerRadius) {
-
+    pickupSound.play()
     
     playerHealth += 10;
     if(playerHealth > 100){

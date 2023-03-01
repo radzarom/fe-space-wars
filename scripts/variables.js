@@ -9,8 +9,25 @@ loader.add("tileset", "../explosion/explosions2.json").load(setupExplosion);
 let soundtrack = new Howl({
     src: ["../sound/soundtrack.mp3"],
     html5: true,
-    loop: true
+    loop: true,
+    volume: 0.4
   });
+
+//set up laser sound
+const laserSound = new Howl({
+  src: ["../sound/laserSound.mp3"],
+  volume: 0.2,
+});
+
+const pickupSound = new Howl({
+  src: ["../sound/pickupsound.mp3"],
+  volume: 0.8,
+});
+
+const blastSound = new Howl({
+  src: ["../sound/extrapowersound.mp3"],
+  volume: 1,
+});
 
 //adss moving background texture
 const backgroundTexture = PIXI.Texture.from("../graphics/spaceBackground.png");

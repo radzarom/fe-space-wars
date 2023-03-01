@@ -1,8 +1,4 @@
-//set up laser sound
-const laserSound = new Howl({
-  src: ["../sound/laserSound.mp3"],
-  volume: 0.3,
-});
+
 
 //gets vector for bullet using cursor coords and center position
 function fireBullet(e) {
@@ -38,13 +34,14 @@ function fireBullet(e) {
   //array of new bullets to send to player
   bulletsToSend.push([player.x, player.y, direction, bulletType]);
 
-  laserSound.play();
 }
 
 function createBullet(x, y, direction, angle, type) {
   //makes new bullet sprite
   let bullet = PIXI.Sprite.from(`../graphics/${type}Bullet.png`);
   bullet.bulletType = type;
+
+  
 
   bullet.height = 30;
   bullet.width = 5;
@@ -53,7 +50,9 @@ function createBullet(x, y, direction, angle, type) {
     bullet.width = 50;
     bullet.height = 50;
     bullet.anchor.set(0.5);
-  }
+    blastSound.play();
+  } else laserSound.play();
+
   //set direction with vector
   bullet.direction = direction;
   //set position of bullet to middle of sprite

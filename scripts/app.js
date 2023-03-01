@@ -218,7 +218,7 @@ function gameLoop(delta, direction) {
   asteroidGame1.rotation += 0.02;
   asteroidGame2.rotation -= 0.013;
 
-  powerUp.rotation += 0.05
+  powerUp.rotation += 0.09
 
   //new bullets to create from opponent
   bulletsReceived = [];
