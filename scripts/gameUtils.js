@@ -43,6 +43,16 @@ function powerUpCollision() {
       playerHealth = 100;
     }
 
+    document.getElementById(
+      "currentplayerhealth"
+    ).style.width = `${playerHealth}%`;
+
+    //if player health is less than or equal to 30 set health bar to red
+    if (playerHealth <= 30) {
+      document.getElementById("currentplayerhealth").style.backgroundColor =
+        "rgba(255,0,0,0.5)";
+    }
+
     poweredUp = true;
     powerUpVisible = false
     powerUp.x = Math.random() * (app.view.width - 100 +1) + 50

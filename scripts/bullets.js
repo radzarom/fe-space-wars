@@ -172,7 +172,9 @@ function updateBullets(delta, direction) {
 
 
       playerHealth -= 10;
+      console.log("first -10");
       if(opponentBullets[i].type === "extraPower") {
+        console.log("second -10");
         playerHealth -= 10;
       }
 

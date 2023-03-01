@@ -231,7 +231,6 @@ async function playGame() {
         document.getElementById("currentopponenthealth").style.backgroundColor =
           "rgba(255,0,0,0.5)";
       }
-      console.log(bulletsReceived);
       //create new opponent bullets
       for (let bullet of bulletsReceived) {
 
