@@ -38,9 +38,12 @@ function restart() {
   <div id="instructions">
       <button onClick="showInstructions()" class="button-85">Instructions</button>
       <div id="showInstructions">
-          <p>use WASD to move</p>
-          <p>turn to shoot with mouse and click</p>
-          <p>destroy your enemy and survive</p>
+          <p>1. use WASD to move</p>
+          <p>2. press space to decrease velocity</p>
+          <p>3. use mouse and click to turn and shoot</p>
+          <p>4. use asteroids to take cover</p>
+          <p>5. fly over a power up to regain health and deal more damage on your next shot</p> 
+          <p>6. survive</p>
       </div>
   </div>
   <div id="outerDiv">

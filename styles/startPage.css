@@ -96,6 +96,11 @@
     position:absolute;
     top:0px;
     right:20px;
+    
+  }
+
+  #instructions p {
+    word-wrap: break-word;
   }
 
   #instructions button{
@@ -107,6 +112,7 @@
   #showInstructions{
     padding:20px;
     display: none;
+    width: 300px;
   }
 
   #showInstructions p{
