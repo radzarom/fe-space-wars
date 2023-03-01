@@ -50,8 +50,8 @@ function createBullet(x, y, direction, angle, type) {
   bullet.width = 5;
   bullet.anchor.set(1, 0.5);
   if(type === "extraPower") {
-    bullet.width = 100;
-    bullet.height = 100;
+    bullet.width = 50;
+    bullet.height = 50;
     bullet.anchor.set(0.5);
   }
   //set direction with vector
@@ -156,6 +156,9 @@ function updateBullets(delta, direction) {
     opponentBullets[i].position.y += opponentBullets[i].direction.y * bulletSpeed;
     opponentBullets[i].position.x += opponentBullets[i].direction.x * bulletSpeed;
 
+    if(opponentBullets[i].type === "extraPower") {
+      opponentBullets[i].rotation += 1.1
+    }
     //conditions for determining if bullet is offscreen go here, set to dead
     if (
       asteroidDetection(asteroidGame1, opponentBullets[i]) ||
@@ -167,7 +170,11 @@ function updateBullets(delta, direction) {
     //if opponent bullet hits player, drain health
     if (collisionDetection(player, opponentBullets[i])) {
 
+
       playerHealth -= 10;
+      if(opponentBullets[i].type === "extraPower") {
+        playerHealth -= 10;
+      }
 
       //if player health is less or equal to 0 declare loss
       if (playerHealth <= 0) {
