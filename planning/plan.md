@@ -42,3 +42,12 @@ An online game where 2 players are matched, and pilot their own space ships and 
 - As a user, I can keep track of my and the opponents health
 - As a user, I can see who has won and lost by player names
 - As a user, I can choose to play another game from the win/loss screen
+
+## Retrospective action points
+
+- We worked well in a team, and dealt with issues together patiently
+- We learned how to organise ourselves each day and discuss what had been achieved along the way
+- It was good to see what we're capable of
+- Could have spend more time understanding options for technologies to use, and making sure there's enough resources to help
+- Could have taken more time keeping all team members up to speed
+- Could have made more specific time to note creases to iron out like server closing clients more reliably
